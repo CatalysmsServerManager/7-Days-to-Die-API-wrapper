@@ -17,5 +17,4 @@ async function getStats(server: SdtdServer) {
     }
 }
 
-
 module.exports = getStats

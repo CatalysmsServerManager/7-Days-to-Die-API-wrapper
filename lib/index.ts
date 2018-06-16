@@ -1,5 +1,3 @@
-let getStats = require('./src/getStats');
-
 interface SdtdServer {
     ip: string,
     port: number,
@@ -7,8 +5,10 @@ interface SdtdServer {
     adminToken: string
 }
 
+
 class SdtdApi {
-    static getStats = require('./src/getStats');
+    static getStats = require('./getStats.js');
+    static getOnlinePlayers = require('./getOnlinePlayers.js');
 }
 
 module.exports = SdtdApi
