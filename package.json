@@ -13,11 +13,13 @@
   },
   "devDependencies": {
     "@types/node": "^10.3.3",
-    "@types/snekfetch": "^4.0.1"
+    "@types/snekfetch": "^4.0.1",
+    "typedoc": "^0.11.1"
   },
   "scripts": {
     "test": "mocha --reporter spec",
-    "build": "tsc -D"
+    "build": "tsc -D",
+    "docs" : "typedoc --out docs/ lib/ --theme minimal"
   },
   "keywords": [
     "web",
