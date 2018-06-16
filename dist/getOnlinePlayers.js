@@ -36,12 +36,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var snekfetch = require("snekfetch");
-function getStats(server) {
+function getOnlinePlayers(server) {
     return __awaiter(this, void 0, void 0, function () {
         var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, snekfetch.get("http://" + server.ip + ":" + server.port + "/api/getstats")];
+                case 0: return [4 /*yield*/, snekfetch.get("http://" + server.ip + ":" + server.port + "/api/getplayersonline?adminuser=" + server.adminUser + "&admintoken=" + server.adminToken)];
                 case 1:
                     response = _a.sent();
                     if (response.statusCode !== 200) {
@@ -55,5 +55,5 @@ function getStats(server) {
         });
     });
 }
-module.exports = getStats;
-//# sourceMappingURL=getStats.js.map
+module.exports = getOnlinePlayers;
+//# sourceMappingURL=getOnlinePlayers.js.map

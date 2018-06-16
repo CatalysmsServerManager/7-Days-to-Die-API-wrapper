@@ -1,9 +1,9 @@
 "use strict";
-var getStats = require('./src/getStats');
 var SdtdApi = /** @class */ (function () {
     function SdtdApi() {
     }
-    SdtdApi.getStats = require('./src/getStats');
+    SdtdApi.getStats = require('./getStats.js');
+    SdtdApi.getOnlinePlayers = require('./getOnlinePlayers.js');
     return SdtdApi;
 }());
 module.exports = SdtdApi;
