@@ -1,3 +1,13 @@
 language: node_js
 node_js:
   - "lts/*"
+
+  before_script:
+  - npm run setup
+  - npm run build
+
+script:
+  - npm test
+
+after_success:
+  - npm run docs
