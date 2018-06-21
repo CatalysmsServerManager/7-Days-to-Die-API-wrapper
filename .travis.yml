@@ -4,10 +4,17 @@ node_js:
 
 before_script:
   - npm install
-  - npm run build
 
 script:
   - npm test
 
 after_success:
   - npm run docs
+
+deploy:
+  - provider: pages
+    skip_cleanup: true
+    local_dir: docs/
+    github_token: $GITHUB_TOKEN
+    on:
+      branch: master
