@@ -19,4 +19,11 @@ describe('/api/executeconsolecommand', async () => {
         expect(response.parameters).to.be.a('string');
     });
 
+    it('Executes a command correctly', async () => {
+        let response = await SdtdApi.executeConsoleCommand(testServer, "help");
+        expect(response.command).to.eq('help')
+        expect(response.parameters).to.eq('');
+        expect(response.result).to.include("*** Generic Console Help ***")
+    });
+
 });
