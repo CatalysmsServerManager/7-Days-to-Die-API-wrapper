@@ -70,3 +70,23 @@ export interface CommandEntry {
     description: String,
     help: String
 }
+
+export interface InventoryResponse {
+    playername: String,
+    bag: Array < any >,
+    belt: Array < any >,
+    equipment: PlayerEquipment,
+}
+
+export interface PlayerEquipment {
+    head: any,
+    eyes: any,
+    face: any,
+    armor: any,
+    jacket: any,
+    shirt: any,
+    legarmor: any,
+    pants: any,
+    boots: any,
+    gloves: any
+}

@@ -63,7 +63,7 @@ export class SdtdApi {
         }
     }
 
-    static async getAnimalsLocation(server: SdtdServer, command: String) {
+    static async getAnimalsLocation(server: SdtdServer) {
         let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getanimalslocation?adminuser=${server.adminUser}&admintoken=${server.adminToken}`);
         if (!response.ok) {
             throw new Error(`Failed to get animals location - ${response.statusText}`)
@@ -72,7 +72,7 @@ export class SdtdApi {
         }
     }
 
-    static async getHostileLocation(server: SdtdServer, command: String) {
+    static async getHostileLocation(server: SdtdServer) {
         let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/gethostilelocation?adminuser=${server.adminUser}&admintoken=${server.adminToken}`);
         if (!response.ok) {
             throw new Error(`Failed to get hostiles location - ${response.statusText}`)
@@ -81,7 +81,7 @@ export class SdtdApi {
         }
     }
 
-    static async getLandClaims(server: SdtdServer, command: String) {
+    static async getLandClaims(server: SdtdServer) {
         let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getlandclaims?adminuser=${server.adminUser}&admintoken=${server.adminToken}`);
         if (!response.ok) {
             throw new Error(`Failed to get land claims - ${response.statusText}`)
@@ -89,6 +89,16 @@ export class SdtdApi {
             return response.body as Array < responses.landClaimsResponse >
         }
     }
+
+    static async getPlayerInventory(server: SdtdServer, steamId: String) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getplayerinventory?adminuser=${server.adminUser}&admintoken=${server.adminToken}&steamId=${steamId}`);
+        if (!response.ok) {
+            throw new Error(`Failed to get player inventory - ${response.statusText}`)
+        } else {
+            return response.body as Array < responses.InventoryResponse >
+        }
+    }
+    
 }
 
 module.exports = SdtdApi
