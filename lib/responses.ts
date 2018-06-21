@@ -43,6 +43,18 @@ export interface entityLocation {
     position: Position
 }
 
+export interface landClaimsResponse {
+    claimsize: Number,
+    claimowners: Array < ClaimOwner >
+}
+
+export interface ClaimOwner {
+    steamid: String,
+    claimactive: Boolean,
+    playername: String,
+    claims: Array < Position >
+}
+
 export interface CommandResponse {
     command: String,
     parameters: String,

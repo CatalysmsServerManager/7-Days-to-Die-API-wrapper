@@ -80,6 +80,15 @@ export class SdtdApi {
             return response.body as Array < responses.entityLocation >
         }
     }
+
+    static async getLandClaims(server: SdtdServer, command: String) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getlandclaims?adminuser=${server.adminUser}&admintoken=${server.adminToken}`);
+        if (!response.ok) {
+            throw new Error(`Failed to get land claims - ${response.statusText}`)
+        } else {
+            return response.body as Array < responses.landClaimsResponse >
+        }
+    }
 }
 
 module.exports = SdtdApi
