@@ -1,4 +1,5 @@
 import * as snekfetch from "snekfetch"
+import * as responses from './responses'
 
 export interface SdtdServer {
     ip: String,
@@ -7,24 +8,6 @@ export interface SdtdServer {
     adminToken: String
 }
 
-export interface GameTime {
-    days: Number,
-    hours: Number,
-    minutes: Number
-}
-
-export interface StatsResponse {
-    gametime : GameTime,
-    players: Number,
-    hostiles: Number,
-    animals: Number 
-}
-
-export interface CommandResponse {
-    command: String,
-    parameters: String,
-    result: String
-}
 
 export class SdtdApi {
 
@@ -38,7 +21,7 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get stats - ${response.statusText}`)
         } else {
-            return response.body as StatsResponse
+            return response.body as responses.StatsResponse
         }
     }
 
@@ -52,7 +35,7 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get online players - ${response.statusText}`)
         } else {
-            return response.body
+            return response.body as Array<responses.OnlinePlayerResponse>
         }
     }
 
@@ -66,7 +49,7 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get allowed commands - ${response.statusText}`)
         } else {
-            return response.body
+            return response.body as responses.AllowedCommands
         }
     }
 
@@ -76,11 +59,9 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to execute command - ${response.statusText}`)
         } else {
-            return response.body as CommandResponse
+            return response.body as responses.CommandResponse
         }
     }
 }
 
-
 module.exports = SdtdApi
-

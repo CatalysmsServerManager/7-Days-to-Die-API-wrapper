@@ -1,13 +1,15 @@
 'use strict';
-let expect = require('chai').expect;
-let SdtdApi = require('../dist/index.js');
+import { expect } from 'chai'
+import { SdtdServer } from '../lib/index';
+let SdtdApi = require('../dist/lib/index.js');
+
 require('dotenv').config()
 
-let testServer = {
-    ip: process.env.TESTIP,
-    port: process.env.TESTPORT,
-    adminUser: process.env.TESTADMINUSER,
-    adminToken: process.env.TESTADMINTOKEN
+let testServer: SdtdServer = {
+    ip: process.env.TESTIP as String,
+    port: process.env.TESTPORT as String,
+    adminUser: process.env.TESTADMINUSER as String,
+    adminToken: process.env.TESTADMINTOKEN as String
 }
 
 describe('/api/executeconsolecommand', async () => {

@@ -1,6 +1,7 @@
 'use strict';
 import { expect } from 'chai'
-import { SdtdApi, SdtdServer } from '../lib/index'
+import { SdtdServer } from '../lib/index'
+let SdtdApi = require('../dist/lib/index.js');
 
 require('dotenv').config()
 

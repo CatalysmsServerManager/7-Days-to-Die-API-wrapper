@@ -22,7 +22,7 @@
   },
   "scripts": {
     "pretest": "npm run build",
-    "test": "mocha -r ts-node/register --reporter spec",
+    "test": "mocha -r ts-node/register test/*.test.ts",
     "build": "tsc -D",
     "build-watch": "tsc --watch",
     "docs": "typedoc --out docs/ lib/ --theme minimal --name '7 Days to Die API wrapper' --includeDeclarations --excludeExternals --exclude lib/getStats.ts",
