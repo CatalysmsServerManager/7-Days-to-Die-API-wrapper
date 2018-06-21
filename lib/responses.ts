@@ -11,7 +11,7 @@ export interface StatsResponse {
     animals: Number
 }
 
-export interface PlayerPosition {
+export interface Position {
     x: Number,
     y: Number,
     z: Number
@@ -23,7 +23,7 @@ export interface OnlinePlayerResponse {
     ip: String,
     name: String,
     online: Boolean,
-    position: PlayerPosition,
+    position: Position,
     experience: Number,
     level: Number,
     health: Number,
@@ -35,6 +35,12 @@ export interface OnlinePlayerResponse {
     totalplaytime: Number,
     lastonline: String,
     ping: Number
+}
+
+export interface AnimalLocation {
+    id : Number,
+    name: String,
+    position: Position
 }
 
 export interface CommandResponse {

@@ -62,6 +62,15 @@ export class SdtdApi {
             return response.body as responses.CommandResponse
         }
     }
+
+    static async getAnimalsLocation(server: SdtdServer, command: String) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getanimalslocation?adminuser=${server.adminUser}&admintoken=${server.adminToken}`);
+        if (!response.ok) {
+            throw new Error(`Failed to get animals location - ${response.statusText}`)
+        } else {
+            return response.body as Array < responses.AnimalLocation >
+        }
+    }
 }
 
 module.exports = SdtdApi
