@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - "lts/*"
+  - "10.5.0"
 
 before_script:
   - npm install
@@ -18,3 +19,4 @@ deploy:
     github_token: $GITHUB_TOKEN
     on:
       branch: master
+      node: "lts/*"
