@@ -19,7 +19,7 @@
   "scripts": {
     "test": "mocha --reporter spec",
     "build": "tsc -D",
-    "docs" : "typedoc --out docs/ lib/ --theme minimal"
+    "docs": "typedoc --out docs/ lib/ --theme minimal"
   },
   "keywords": [
     "web",
