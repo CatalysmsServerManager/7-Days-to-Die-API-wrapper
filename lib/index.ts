@@ -1,14 +1,11 @@
-interface SdtdServer {
-    ip: string,
-    port: number,
-    adminUser: string,
-    adminToken: string
-}
+import { getStats } from './getStats'
+import { getOnlinePlayers } from './getOnlinePlayers'
+import { getAllowedCommands } from './getAllowedCommands'
 
-
-class SdtdApi {
-    static getStats = require('./getStats.js');
-    static getOnlinePlayers = require('./getOnlinePlayers.js');
+export class SdtdApi {
+    static getStats = getStats
+    static getOnlinePlayers = getOnlinePlayers
+    static getAllowedCommands = getAllowedCommands
 }
 
 module.exports = SdtdApi
