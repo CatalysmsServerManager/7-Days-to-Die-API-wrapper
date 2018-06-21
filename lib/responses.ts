@@ -37,7 +37,7 @@ export interface OnlinePlayerResponse {
     ping: Number
 }
 
-export interface AnimalLocation {
+export interface entityLocation {
     id : Number,
     name: String,
     position: Position

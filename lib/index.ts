@@ -68,7 +68,16 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get animals location - ${response.statusText}`)
         } else {
-            return response.body as Array < responses.AnimalLocation >
+            return response.body as Array < responses.entityLocation >
+        }
+    }
+
+    static async getHostileLocation(server: SdtdServer, command: String) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/gethostilelocation?adminuser=${server.adminUser}&admintoken=${server.adminToken}`);
+        if (!response.ok) {
+            throw new Error(`Failed to get hostiles location - ${response.statusText}`)
+        } else {
+            return response.body as Array < responses.entityLocation >
         }
     }
 }
