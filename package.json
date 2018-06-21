@@ -5,21 +5,24 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "chai": "^4.1.2",
     "dotenv": "^6.0.0",
-    "mocha": "^5.2.0",
     "snekfetch": "^4.0.2",
     "typescript": "^2.9.2"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.3",
     "@types/node": "^10.3.3",
     "@types/snekfetch": "^4.0.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
     "shx": "^0.3.0",
+    "ts-node": "^6.1.2",
     "typedoc": "^0.11.1"
   },
   "scripts": {
     "pretest": "npm run build",
-    "test": "mocha --reporter spec",
+    "test": "mocha -r ts-node/register --reporter spec",
     "build": "tsc -D",
     "build-watch": "tsc --watch",
     "docs": "typedoc --out docs/ lib/ --theme minimal --name '7 Days to Die API wrapper' --includeDeclarations --excludeExternals --exclude lib/getStats.ts",

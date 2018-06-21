@@ -1,10 +1,29 @@
 import * as snekfetch from "snekfetch"
 
 export interface SdtdServer {
-    ip: string,
-    port: number,
-    adminUser: string,
-    adminToken: string
+    ip: String,
+    port: String,
+    adminUser: String,
+    adminToken: String
+}
+
+export interface GameTime {
+    days: Number,
+    hours: Number,
+    minutes: Number
+}
+
+export interface StatsResponse {
+    gametime : GameTime,
+    players: Number,
+    hostiles: Number,
+    animals: Number 
+}
+
+export interface CommandResponse {
+    command: String,
+    parameters: String,
+    result: String
 }
 
 export class SdtdApi {
@@ -19,7 +38,7 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get stats - ${response.statusText}`)
         } else {
-            return response.body
+            return response.body as StatsResponse
         }
     }
 
@@ -50,6 +69,18 @@ export class SdtdApi {
             return response.body
         }
     }
+
+
+    static async executeConsoleCommand(server: SdtdServer, command: String) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/executeconsolecommand?adminuser=${server.adminUser}&admintoken=${server.adminToken}&command=${command}`);
+        if (!response.ok) {
+            throw new Error(`Failed to execute command - ${response.statusText}`)
+        } else {
+            return response.body as CommandResponse
+        }
+    }
 }
 
+
 module.exports = SdtdApi
+
