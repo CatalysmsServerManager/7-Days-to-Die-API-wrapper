@@ -17,8 +17,10 @@
     "typedoc": "^0.11.1"
   },
   "scripts": {
+    "pretest": "npm run build",
     "test": "mocha --reporter spec",
     "build": "tsc -D",
+    "build-watch": "tsc --watch",
     "docs": "typedoc --out docs/ lib/ --theme minimal"
   },
   "keywords": [
