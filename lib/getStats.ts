@@ -1,5 +1,7 @@
 import * as snekfetch from "snekfetch"
-import {SdtdServer} from "./sdtdServer"
+import { SdtdServer } from "./sdtdServer"
+
+
 
 async function getStats(server: SdtdServer) {
     let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getstats`);
@@ -11,4 +13,4 @@ async function getStats(server: SdtdServer) {
     }
 }
 
-export {getStats}
+export { getStats }
