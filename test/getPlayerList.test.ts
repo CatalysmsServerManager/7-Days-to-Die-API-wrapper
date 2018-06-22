@@ -13,7 +13,7 @@ let testServer: SdtdServer = {
 }
 
 describe('/api/getPlayerList', async () => {
-    it('Returns command, parameters and result', async () => {
+    it('Returns expected output', async () => {
         let response = await SdtdApi.getPlayerList(testServer);
         expect(response.total).to.be.a('number');
         expect(response.totalUnfiltered).to.be.a('number');
