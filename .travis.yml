@@ -1,8 +1,6 @@
 language: node_js
 node_js:
   - "lts/*"
-  - "8.11.3"
-  - "10.5.0"
 
 before_script:
   - npm install
@@ -21,7 +19,6 @@ deploy:
     github_token: $GITHUB_TOKEN
     on:
       branch: master
-      node: "lts/*"
       tags: true
 
   - provider: releases
@@ -37,4 +34,3 @@ deploy:
     api_key: $NPM_TOKEN
     on:
       tags: true
-      node: "lts/*"
