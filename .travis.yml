@@ -7,10 +7,13 @@ before_script:
 
 script:
   - npm test
+  - npm run cover
 
 after_success:
   - npm run docs
   - npm pack
+
+after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
 
 deploy:
   - provider: pages
