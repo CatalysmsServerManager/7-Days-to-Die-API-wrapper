@@ -23,6 +23,14 @@ deploy:
       branch: master
       node: "lts/*"
       tags: true
+
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    file_glob: true
+    file: "7daystodie-api-wrapper-*.tgz"
+    skip_cleanup: true
+    on:
+      tags: true
   - provider: npm
     skip_cleanup: true
     email: "niekcandaele@gmail.com"
