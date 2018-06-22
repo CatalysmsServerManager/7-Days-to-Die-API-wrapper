@@ -15,6 +15,9 @@ https://7dtd.illy.bz/wiki/Ports
 
  ## Example usage
 
+ Install with npm
+ `npm i 7daystodie-api-wrapper`
+
  ```js
 const SdtdApi = require('7daystodie-api-wrapper');
 
