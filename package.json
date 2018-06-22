@@ -1,19 +1,19 @@
 {
   "name": "7-days-to-die-api-wrapper",
   "version": "1.0.0",
-  "description": "Interact with a 7DTD web API",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "description": "Interact with a 7DTD web API from Allocs Fixes",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
   "dependencies": {
     "dotenv": "^6.0.0",
-    "snekfetch": "^4.0.2",
-    "typescript": "^2.9.2"
+    "snekfetch": "^4.0.2"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.3",
     "@types/node": "^10.3.3",
     "@types/snekfetch": "^4.0.1",
+    "typescript": "^2.9.2",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "shx": "^0.3.0",
