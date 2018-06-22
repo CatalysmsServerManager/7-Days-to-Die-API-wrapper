@@ -9,7 +9,6 @@
     "url": "https://github.com/CatalysmsServerManager/7-Days-to-Die-API-wrapper"
   },
   "dependencies": {
-    "dotenv": "^6.0.0",
     "snekfetch": "^4.0.2"
   },
   "devDependencies": {
@@ -21,6 +20,7 @@
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "coveralls": "^3.0.1",
+    "dotenv": "^6.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "shx": "^0.3.0",
