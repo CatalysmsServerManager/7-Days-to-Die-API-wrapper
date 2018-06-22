@@ -116,10 +116,19 @@ export class SdtdApi {
         }
     }
 
-    static async getServerInfo(server: SdtdServer, offline : Boolean) {
+    static async getServerInfo(server: SdtdServer) {
         let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getserverinfo?adminuser=${server.adminUser}&admintoken=${server.adminToken}`);
         if (!response.ok) {
             throw new Error(`Failed to get server info - ${response.statusText}`)
+        } else {
+            return response.body as responses.GetServerInfo
+        }
+    }
+
+    static async getWebUIUpdates(server: SdtdServer, latestLine: Number) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getwebuiupdates?adminuser=${server.adminUser}&admintoken=${server.adminToken}&latestLine=${latestLine}`);
+        if (!response.ok) {
+            throw new Error(`Failed to get web UI updates - ${response.statusText}`)
         } else {
             return response.body as responses.GetServerInfo
         }

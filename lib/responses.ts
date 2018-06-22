@@ -177,3 +177,11 @@ export interface GetServerInfoEntry {
     type: String,
     value: any
 }
+
+export interface GetWebUIUpdatesResponse {
+    gametime: GameTime,
+    players: Number,
+    hostiles: Number,
+    animals: Number,
+    newlogs: Number
+}
