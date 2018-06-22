@@ -90,3 +90,23 @@ export interface PlayerEquipment {
     boots: any,
     gloves: any
 }
+
+export interface getPlayerListResponse {
+    total: Number,
+    totalUnfiltered: Number,
+    firstResult: Number,
+    players: Array < PlayerNotOnline >
+}
+
+export interface PlayerNotOnline {
+    steamid: String,
+    entityid: Number,
+    ip: String,
+    name: String,
+    online: Boolean,
+    position: Position,
+    totalplaytime: Number,
+    lastonline: String,
+    ping: Number,
+    banned: Boolean
+}

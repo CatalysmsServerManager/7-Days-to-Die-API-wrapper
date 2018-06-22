@@ -53,7 +53,6 @@ export class SdtdApi {
         }
     }
 
-
     static async executeConsoleCommand(server: SdtdServer, command: String) {
         let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/executeconsolecommand?adminuser=${server.adminUser}&admintoken=${server.adminToken}&command=${command}`);
         if (!response.ok) {
@@ -96,6 +95,15 @@ export class SdtdApi {
             throw new Error(`Failed to get player inventory - ${response.statusText}`)
         } else {
             return response.body as Array < responses.InventoryResponse >
+        }
+    }
+
+    static async getPlayerList(server: SdtdServer, rowsPerPage: Number, page: Number) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getplayerlist?adminuser=${server.adminUser}&admintoken=${server.adminToken}&rowsperpage=${rowsPerPage}&page=${page}`);
+        if (!response.ok) {
+            throw new Error(`Failed to get player list - ${response.statusText}`)
+        } else {
+            return response.body as Array < responses.getPlayerListResponse >
         }
     }
     
