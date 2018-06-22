@@ -18,8 +18,9 @@ deploy:
     local_dir: docs/
     github_token: $GITHUB_TOKEN
     on:
-      branch: master
+      all_branches: true
       tags: true
+      repo: CatalysmsServerManager/7-Days-to-Die-API-wrapper
 
   - provider: releases
     api_key: $GITHUB_TOKEN
@@ -28,9 +29,14 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
+      all_branches: true
+      repo: CatalysmsServerManager/7-Days-to-Die-API-wrapper
+
   - provider: npm
     skip_cleanup: true
     email: "niekcandaele@gmail.com"
     api_key: $NPM_TOKEN
     on:
       tags: true
+      all_branches: true
+      repo: CatalysmsServerManager/7-Days-to-Die-API-wrapper
