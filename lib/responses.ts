@@ -167,7 +167,7 @@ export interface GetServerInfo {
     Architecture64: GetServerInfoEntry,
     StockSettings: GetServerInfoEntry,
     StockFiles: GetServerInfoEntry,
-    RequiredMod: GetServerInfoEntry,
+    RequiresMod: GetServerInfoEntry,
     AirDropMarker: GetServerInfoEntry,
     EnemySpawnMode: GetServerInfoEntry,
     IsPublic: GetServerInfoEntry
