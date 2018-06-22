@@ -4,6 +4,10 @@
   "description": "Interact with a 7DTD web API from Allocs Fixes",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CatalysmsServerManager/7-Days-to-Die-API-wrapper"
+  },
   "dependencies": {
     "dotenv": "^6.0.0",
     "snekfetch": "^4.0.2"
