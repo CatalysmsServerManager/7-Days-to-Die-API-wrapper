@@ -116,6 +116,15 @@ export class SdtdApi {
         }
     }
 
+    static async getServerInfo(server: SdtdServer, offline : Boolean) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getserverinfo?adminuser=${server.adminUser}&admintoken=${server.adminToken}`);
+        if (!response.ok) {
+            throw new Error(`Failed to get server info - ${response.statusText}`)
+        } else {
+            return response.body as responses.GetServerInfo
+        }
+    }
+
 }
 
 module.exports = SdtdApi
