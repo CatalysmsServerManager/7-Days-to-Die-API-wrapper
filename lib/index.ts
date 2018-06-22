@@ -67,7 +67,7 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get animals location - ${response.statusText}`)
         } else {
-            return response.body as Array < responses.entityLocation >
+            return response.body as Array<responses.entityLocation>
         }
     }
 
@@ -76,7 +76,7 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get hostiles location - ${response.statusText}`)
         } else {
-            return response.body as Array < responses.entityLocation >
+            return response.body as Array<responses.entityLocation>
         }
     }
 
@@ -85,7 +85,7 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get land claims - ${response.statusText}`)
         } else {
-            return response.body as Array < responses.landClaimsResponse >
+            return response.body as Array<responses.landClaimsResponse>
         }
     }
 
@@ -94,7 +94,7 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get player inventory - ${response.statusText}`)
         } else {
-            return response.body as Array < responses.InventoryResponse >
+            return response.body as Array<responses.InventoryResponse>
         }
     }
 
@@ -103,10 +103,19 @@ export class SdtdApi {
         if (!response.ok) {
             throw new Error(`Failed to get player list - ${response.statusText}`)
         } else {
-            return response.body as Array < responses.getPlayerListResponse >
+            return response.body as Array<responses.getPlayerListResponse>
         }
     }
-    
+
+    static async getPlayersLocation(server: SdtdServer, offline : Boolean) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getplayerslocation?adminuser=${server.adminUser}&admintoken=${server.adminToken}&offline=${offline}`);
+        if (!response.ok) {
+            throw new Error(`Failed to get players location - ${response.statusText}`)
+        } else {
+            return response.body as Array<responses.PlayerLocation>
+        }
+    }
+
 }
 
 module.exports = SdtdApi

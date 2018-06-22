@@ -110,3 +110,10 @@ export interface PlayerNotOnline {
     ping: Number,
     banned: Boolean
 }
+
+export interface PlayerLocation {
+    steamid: String,
+    name: String,
+    online: Boolean,
+    position: Position
+}
