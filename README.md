@@ -1,11 +1,10 @@
 [![Build Status](https://travis-ci.org/CatalysmsServerManager/7-Days-to-Die-API-wrapper.svg?branch=master)](https://travis-ci.org/CatalysmsServerManager/7-Days-to-Die-API-wrapper)
 [![Coverage Status](https://coveralls.io/repos/github/CatalysmsServerManager/7-Days-to-Die-API-wrapper/badge.svg?branch=master)](https://coveralls.io/github/CatalysmsServerManager/7-Days-to-Die-API-wrapper?branch=master)
+[![Docs](https://img.shields.io/badge/Docs--green.svg)](https://catalysmsservermanager.github.io/7-Days-to-Die-API-wrapper)
 
 # 7 Days to die API wrapper
 
 A simple wrapper around the web API from Alloc's fixes mod.
-
- - [Docs](https://catalysmsservermanager.github.io/7-Days-to-Die-API-wrapper)
 
  ## Requirements
 
