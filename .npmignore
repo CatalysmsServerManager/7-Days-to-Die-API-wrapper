@@ -3,3 +3,5 @@ tsconfig.json
 .nojekyll
 docs/
 .npmignore
+
+7daystodie-api-wrapper-*.tgz

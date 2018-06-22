@@ -12,6 +12,7 @@ script:
 
 after_success:
   - npm run docs
+  - npm pack
 
 deploy:
   - provider: pages
@@ -20,4 +21,12 @@ deploy:
     github_token: $GITHUB_TOKEN
     on:
       branch: master
+      node: "lts/*"
+      tags: true
+  - provider: npm
+    skip_cleanup: true
+    email: "niekcandaele@gmail.com"
+    api_key: $NPM_TOKEN
+    on:
+      tags: true
       node: "lts/*"
