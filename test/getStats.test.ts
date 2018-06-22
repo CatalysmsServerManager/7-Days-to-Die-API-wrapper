@@ -23,27 +23,16 @@ let badTestServer: SdtdServer = {
 }
 
 describe('/api/getstats', async () => {
-    it('Returns players info', async () => {
+    it('Returns expected info', async () => {
         let response = await SdtdApi.getStats(testServer);
         chai.expect(response.players).to.be.a('number');
-    });
-
-    it('Returns animals info', async () => {
-        let response = await SdtdApi.getStats(testServer);
         chai.expect(response.animals).to.be.a('number');
-    });
-
-    it('Returns hostiles info', async () => {
-        let response = await SdtdApi.getStats(testServer);
         chai.expect(response.hostiles).to.be.a('number');
-    });
-
-    it('Returns game time info', async () => {
-        let response = await SdtdApi.getStats(testServer);
         chai.expect(response.gametime.days).to.be.a('number');
         chai.expect(response.gametime.hours).to.be.a('number');
         chai.expect(response.gametime.minutes).to.be.a('number');
     });
+
     it('Errors when incorrect server info is given', async () => {
         return chai.expect(SdtdApi.getStats(badTestServer)).to.be.rejectedWith(Error);
     });
