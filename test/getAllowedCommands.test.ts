@@ -1,8 +1,12 @@
 'use strict';
-import { expect } from 'chai'
+import * as chai from 'chai'
+import * as chaiAsPromised from 'chai-as-promised'
 import { SdtdServer } from '../lib/index'
 let SdtdApi = require('../lib/index.js');
+
 require('dotenv').config()
+
+chai.use(chaiAsPromised)
 
 let testServer: SdtdServer = {
     ip: process.env.TESTIP as String,
@@ -11,10 +15,19 @@ let testServer: SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
+let badTestServer: SdtdServer = {
+    ip: "Not an IP address",
+    port: process.env.TESTPORT as String,
+    adminUser: process.env.TESTADMINUSER as String,
+    adminToken: process.env.TESTADMINTOKEN as String
+}
 describe('/api/getAllowedCommands', async () => {
     it('Returns an array', async () => {
         let response = await SdtdApi.getAllowedCommands(testServer);
-        expect(response.commands).to.be.a('array');
+        chai.expect(response.commands).to.be.a('array');
+    });
+    it('Errors when incorrect server info is given', async () => {
+        return chai.expect(SdtdApi.getAllowedCommands(badTestServer)).to.be.rejectedWith(Error);
     });
 
 });

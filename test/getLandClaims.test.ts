@@ -1,9 +1,12 @@
 'use strict';
-import { expect } from 'chai'
-import { SdtdServer } from '../lib/index';
+import * as chai from 'chai'
+import * as chaiAsPromised from 'chai-as-promised'
+import { SdtdServer } from '../lib/index'
 let SdtdApi = require('../lib/index.js');
 
 require('dotenv').config()
+
+chai.use(chaiAsPromised)
 
 let testServer: SdtdServer = {
     ip: process.env.TESTIP as String,
@@ -12,11 +15,21 @@ let testServer: SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
+let badTestServer: SdtdServer = {
+    ip: "Not an IP address",
+    port: process.env.TESTPORT as String,
+    adminUser: process.env.TESTADMINUSER as String,
+    adminToken: process.env.TESTADMINTOKEN as String
+}
+
 describe('/api/getLandClaims', async () => {
     it('Returns an array of animal info', async () => {
         let response = await SdtdApi.getLandClaims(testServer);
-        expect(response.claimowners).to.be.a('array');
-        expect(response.claimsize).to.be.a('number');
+        chai.expect(response.claimowners).to.be.a('array');
+        chai.expect(response.claimsize).to.be.a('number');
+    });
+    it('Errors when incorrect server info is given', async () => {
+        return chai.expect(SdtdApi.getLandClaims(badTestServer)).to.be.rejectedWith(Error);
     });
 
 });
