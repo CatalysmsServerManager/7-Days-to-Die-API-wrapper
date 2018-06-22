@@ -185,3 +185,18 @@ export interface GetWebUIUpdatesResponse {
     animals: Number,
     newlogs: Number
 }
+
+export interface LogLine {
+    date: String,
+    time: String,
+    uptime: String,
+    msg: String,
+    trace: String,
+    type: String
+}
+
+export interface GetLog {
+    firstLine: Number,
+    lastLine: Number,
+    entries: Array < LogLine >
+}

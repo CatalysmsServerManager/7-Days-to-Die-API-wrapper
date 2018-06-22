@@ -134,6 +134,15 @@ export class SdtdApi {
         }
     }
 
+    static async getLog(server: SdtdServer, firstLine: Number) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getlog?adminuser=${server.adminUser}&admintoken=${server.adminToken}&firstLine=${firstLine}`);
+        if (!response.ok) {
+            throw new Error(`Failed to get log - ${response.statusText}`)
+        } else {
+            return response.body as responses.GetLog
+        }
+    }
+
 }
 
 module.exports = SdtdApi
