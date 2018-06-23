@@ -50,6 +50,11 @@ export class SdtdApi {
         return response.body as Array<responses.InventoryResponse>
     }
 
+    static async getPlayerInventories(server: SdtdServer) {
+        let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getplayerinventories?adminuser=${server.adminUser}&admintoken=${server.adminToken}`);
+        return response.body as responses.GetLog
+    }
+
     static async getPlayerList(server: SdtdServer, rowsPerPage: Number, page: Number) {
         let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getplayerlist?adminuser=${server.adminUser}&admintoken=${server.adminToken}&rowsperpage=${rowsPerPage}&page=${page}`);
         return response.body as Array<responses.getPlayerListResponse>
@@ -72,7 +77,7 @@ export class SdtdApi {
 
     static async getLog(server: SdtdServer, firstLine: Number) {
         let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getlog?adminuser=${server.adminUser}&admintoken=${server.adminToken}&firstLine=${firstLine}`);
-        return response.body as responses.GetLog
+        return response.body as Array < responses.InventoryResponse >
     }
 
 }
