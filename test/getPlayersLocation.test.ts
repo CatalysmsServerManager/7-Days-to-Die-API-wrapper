@@ -30,7 +30,7 @@ describe('/api/getPlayersLocation', async () => {
     it('Returns an array with data if offline is set to true', async () => {
         let response = await SdtdApi.getPlayersLocation(testServer, true);
         chai.expect(response).to.be.a('array');
-        chai.expect(response).to.have.length.greaterThan(1);
+        chai.expect(response).to.have.length.greaterThan(0);
         chai.expect(response[0].steamid).to.be.a("string");
         chai.expect(response[0].name).to.be.a("string");
         chai.expect(response[0].online).to.be.a("boolean");
