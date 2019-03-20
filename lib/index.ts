@@ -70,10 +70,10 @@ export async function getServerInfo(server: SdtdServer) {
 
 export async function getWebUIUpdates(server: SdtdServer, latestLine: Number) {
     let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getwebuiupdates?adminuser=${server.adminUser}&admintoken=${server.adminToken}&latestLine=${latestLine}`);
-    return response.body as responses.GetServerInfo
+    return response.body as responses.GetWebUIUpdatesResponse
 }
 
-export async function getLog(server: SdtdServer, firstLine: Number) {
-    let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getlog?adminuser=${server.adminUser}&admintoken=${server.adminToken}&firstLine=${firstLine}`);
+export async function getLog(server: SdtdServer, firstLine: Number, count: Number = 50) {
+    let response = await snekfetch.get(`http://${server.ip}:${server.port}/api/getlog?adminuser=${server.adminUser}&admintoken=${server.adminToken}&firstLine=${firstLine}&count=${count}`);
     return response.body as Array<responses.InventoryResponse>
 }
