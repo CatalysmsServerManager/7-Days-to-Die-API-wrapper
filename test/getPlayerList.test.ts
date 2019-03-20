@@ -14,13 +14,6 @@ let testServer: SdtdServer = {
     adminUser: process.env.TESTADMINUSER as String,
     adminToken: process.env.TESTADMINTOKEN as String
 }
-
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
 describe('/api/getPlayerList', async () => {
     it('Returns expected output', async () => {
         let response = await SdtdApi.getPlayerList(testServer);
@@ -33,8 +26,5 @@ describe('/api/getPlayerList', async () => {
         let response = await SdtdApi.getPlayerList(testServer, 1);
         chai.expect(response.players).to.be.a('array');
         chai.expect(response.players).to.have.length(1);
-    });
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getPlayerList(badTestServer)).to.be.rejectedWith(Error);
     });
 });

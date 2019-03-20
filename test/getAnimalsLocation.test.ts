@@ -15,13 +15,6 @@ let testServer: SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
-
 describe('/api/getAnimalsLocation', async () => {
     it('Returns an array of animal info', async () => {
         let response = await SdtdApi.getAnimalsLocation(testServer);
@@ -40,8 +33,4 @@ describe('/api/getAnimalsLocation', async () => {
             chai.expect(animal.position.z).to.be.a('number');
         }
     });
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getAnimalsLocation(badTestServer)).to.be.rejectedWith(Error);
-    });
-
 });

@@ -14,13 +14,6 @@ let testServer: SdtdServer = {
     adminUser: process.env.TESTADMINUSER as String,
     adminToken: process.env.TESTADMINTOKEN as String
 }
-
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
 describe('/api/getServerInfo', async () => {
     it('Returns expected output', async () => {
         let response = await SdtdApi.getServerInfo(testServer);
@@ -76,9 +69,5 @@ describe('/api/getServerInfo', async () => {
         chai.expect(response.AirDropMarker.value).to.be.a('boolean');
         chai.expect(response.EnemySpawnMode.value).to.be.a('boolean');
         chai.expect(response.IsPublic.value).to.be.a('boolean');
-    });
-
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getServerInfo(badTestServer)).to.be.rejectedWith(Error);
     });
 });

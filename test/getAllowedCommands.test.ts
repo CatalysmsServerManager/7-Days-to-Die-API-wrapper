@@ -15,19 +15,9 @@ let testServer: SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
 describe('/api/getAllowedCommands', async () => {
     it('Returns an array', async () => {
         let response = await SdtdApi.getAllowedCommands(testServer);
         chai.expect(response.commands).to.be.a('array');
     });
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getAllowedCommands(badTestServer)).to.be.rejectedWith(Error);
-    });
-
 });
