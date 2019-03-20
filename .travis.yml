@@ -43,3 +43,8 @@ deploy:
       tags: true
       all_branches: true
       repo: CatalysmsServerManager/7-Days-to-Die-API-wrapper
+
+after_failure:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $WEBHOOK_URL

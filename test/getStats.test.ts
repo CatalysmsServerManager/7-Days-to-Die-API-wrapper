@@ -15,13 +15,6 @@ let testServer: SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
-
 describe('/api/getstats', async () => {
     it('Returns expected info', async () => {
         let response = await SdtdApi.getStats(testServer);
@@ -31,9 +24,5 @@ describe('/api/getstats', async () => {
         chai.expect(response.gametime.days).to.be.a('number');
         chai.expect(response.gametime.hours).to.be.a('number');
         chai.expect(response.gametime.minutes).to.be.a('number');
-    });
-
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getStats(badTestServer)).to.be.rejectedWith(Error);
     });
 });

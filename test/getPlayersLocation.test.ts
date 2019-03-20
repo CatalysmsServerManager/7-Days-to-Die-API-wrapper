@@ -15,13 +15,6 @@ let testServer: SdtdApi.SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
-let badTestServer: SdtdApi.SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
-
 describe('/api/getPlayersLocation', async () => {
     it('Returns an array', async () => {
         let response = await SdtdApi.getPlayersLocation(testServer, false);
@@ -34,8 +27,5 @@ describe('/api/getPlayersLocation', async () => {
         chai.expect(response[0].steamid).to.be.a("string");
         chai.expect(response[0].name).to.be.a("string");
         chai.expect(response[0].online).to.be.a("boolean");
-    });
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getPlayersLocation(badTestServer, false)).to.be.rejectedWith(Error);
     });
 });

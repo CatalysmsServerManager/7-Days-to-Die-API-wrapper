@@ -15,13 +15,6 @@ let testServer: SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
-
 describe('/api/getWebUIUpdates', async () => {
     it('Returns expected output', async () => {
         let response = await SdtdApi.getWebUIUpdates(testServer);
@@ -42,8 +35,5 @@ describe('/api/getWebUIUpdates', async () => {
         let secondResponse = await SdtdApi.getWebUIUpdates(testServer, newlogs - logsOffset);
 
         chai.expect(secondResponse.newlogs).to.eq(logsOffset);
-    });
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getWebUIUpdates(badTestServer)).to.be.rejectedWith(Error);
     });
 });

@@ -15,21 +15,10 @@ let testServer: SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
-
 describe('/api/getLandClaims', async () => {
     it('Returns an array of animal info', async () => {
         let response = await SdtdApi.getLandClaims(testServer);
         chai.expect(response.claimowners).to.be.a('array');
         chai.expect(response.claimsize).to.be.a('number');
     });
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getLandClaims(badTestServer)).to.be.rejectedWith(Error);
-    });
-
 });

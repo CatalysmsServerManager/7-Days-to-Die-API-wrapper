@@ -14,14 +14,6 @@ let testServer: SdtdServer = {
     adminUser: process.env.TESTADMINUSER as String,
     adminToken: process.env.TESTADMINTOKEN as String
 }
-
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
-
 describe('/api/getPlayerInventory', async () => {
     it('Returns a playername, bag, belt and equipment', async () => {
         let response = await SdtdApi.getPlayerInventory(testServer, process.env.TESTPLAYER);
@@ -29,8 +21,4 @@ describe('/api/getPlayerInventory', async () => {
         chai.expect(response.bag).to.be.a('array');
         chai.expect(response.belt).to.be.a('array');
     });
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getPlayerInventory(badTestServer)).to.be.rejectedWith(Error);
-    });
-
 });

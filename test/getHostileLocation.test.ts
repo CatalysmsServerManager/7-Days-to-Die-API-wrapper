@@ -15,13 +15,6 @@ let testServer: SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
-
 describe('/api/getHostileLocation', async () => {
     it('Returns an array of hostile info', async () => {
         let response = await SdtdApi.getHostileLocation(testServer);
@@ -40,9 +33,4 @@ describe('/api/getHostileLocation', async () => {
             chai.expect(animal.position.z).to.be.a('number');
         }
     });
-
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.getHostileLocation(badTestServer)).to.be.rejectedWith(Error);
-    });
-
 });

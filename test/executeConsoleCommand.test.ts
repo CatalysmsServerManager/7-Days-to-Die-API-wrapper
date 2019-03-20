@@ -15,12 +15,6 @@ let testServer: SdtdServer = {
     adminToken: process.env.TESTADMINTOKEN as String
 }
 
-let badTestServer: SdtdServer = {
-    ip: "Not an IP address",
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
-}
 describe('/api/executeconsolecommand', async () => {
     it('Returns command, parameters and result', async () => {
         let response = await SdtdApi.executeConsoleCommand(testServer, "help");
@@ -33,9 +27,5 @@ describe('/api/executeconsolecommand', async () => {
         chai.expect(response.command).to.eq('help')
         chai.expect(response.parameters).to.eq('');
         chai.expect(response.result).to.include("*** Generic Console Help ***")
-    });
-
-    it('Errors when incorrect server info is given', async () => {
-        return chai.expect(SdtdApi.executeConsoleCommand(badTestServer)).to.be.rejectedWith(Error);
     });
 });
