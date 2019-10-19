@@ -25,4 +25,9 @@ describe('/api/getstats', async () => {
         chai.expect(response.gametime.hours).to.be.a('number');
         chai.expect(response.gametime.minutes).to.be.a('number');
     });
+
+    it('Accepts extra options', async () => {
+        // If 7d2d server runs on same machine as you are running tests, this 1 ms timeout is sometimes not enough.
+        await chai.expect(SdtdApi.getStats(testServer, {timeout: 1})).to.be.rejectedWith(Error)
+    });
 });
