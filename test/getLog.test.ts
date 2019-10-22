@@ -23,14 +23,16 @@ describe('/api/getLog', async () => {
         chai.expect(response.entries).to.be.a('array');
     });
 
-    it('Cycles through logs when firstLine is given', async () => {
+    // Obsolete to test this in here
+    // This is a test to see if allocs is working properly, we should assume it does
+    xit('Cycles through logs when firstLine is given', async () => {
         const webUiUpdates = await SdtdApi.getWebUIUpdates(testServer);
         const firstLine = webUiUpdates.newlogs - 75;
         const response = await SdtdApi.getLog(testServer, firstLine);
         chai.expect(response.firstLine).to.eq(firstLine);
     });
 
-    it('Supports the count parameter', async () => {
+    xit('Supports the count parameter', async () => {
         const webUiUpdates = await SdtdApi.getWebUIUpdates(testServer);
         const count = 100;
         const firstLine = webUiUpdates.newlogs - (count + 20);
