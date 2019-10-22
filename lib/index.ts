@@ -14,7 +14,7 @@ async function fetchJson(url : string, fetchOpts?: RequestInit) {
 }
 
 export async function getStats(server: SdtdServer, fetchOpts?: RequestInit) {
-    const response = await fetchJson(`http://${server.ip}:${server.port}/api/getstats`, fetchOpts)
+    const response = await fetchJson(`http://${server.ip}:${server.port}/api/getstats?adminuser=${server.adminUser}&admintoken=${server.adminToken}`, fetchOpts)
     return response as responses.StatsResponse
 }
 
