@@ -2,20 +2,20 @@ import fetch, { RequestInit } from "node-fetch"
 import * as responses from './responses'
 
 export interface SdtdServer {
-    ip: String,
-    port: String,
+    ip: string,
+    port: string,
     forceHttps?: Boolean,
-    adminUser: String,
-    adminToken: String
+    adminUser: string,
+    adminToken: string
 }
 
-export function getBaseUrl(server: SdtdServer): String {
+export function getBaseUrl(server: SdtdServer): string {
     let scheme = "http";
     if (server.forceHttps === true) {
         scheme = "https"
     } else if (server.forceHttps === false) {
         scheme = "http"
-    } else if (server.port === "443") {
+    } else if (parseInt(server.port) === 443) {
         scheme = "https"
     }
     return `${scheme}://${server.ip}:${server.port}`;

@@ -6,10 +6,10 @@ import { getBaseUrl, SdtdServer } from '../lib/index'
 chai.use(chaiAsPromised)
 
 let testServer: SdtdServer = {
-    ip: process.env.TESTIP as String,
-    port: process.env.TESTPORT as String,
-    adminUser: process.env.TESTADMINUSER as String,
-    adminToken: process.env.TESTADMINTOKEN as String
+    ip: process.env.TESTIP as string,
+    port: process.env.TESTPORT as string,
+    adminUser: process.env.TESTADMINUSER as string,
+    adminToken: process.env.TESTADMINTOKEN as string
 }
 
 describe('getBaseUrl', async () => {
