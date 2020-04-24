@@ -83,6 +83,6 @@ export async function getWebUIUpdates(server: SdtdServer, latestLine?: number, f
     return fetchJson(server, `/api/getwebuiupdates`, { adminuser: server.adminUser,admintoken: server.adminToken, latestLine: latestLine}, fetchOpts)
 }
 
-export async function getLog(server: SdtdServer, firstLine: number, count: number = 50, fetchOpts?: RequestInit): Promise<Array<responses.InventoryResponse>> {
+export async function getLog(server: SdtdServer, firstLine?: number, count: number = 50, fetchOpts?: RequestInit): Promise<responses.GetLog> {
     return fetchJson(server, `/api/getlog`, { adminuser: server.adminUser,admintoken: server.adminToken, firstLine: firstLine, count: count }, fetchOpts)
 }
