@@ -12,7 +12,9 @@
     "url": "https://github.com/CatalysmsServerManager/7-Days-to-Die-API-wrapper"
   },
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "@types/qs": "^6.9.1",
+    "node-fetch": "^2.6.0",
+    "qs": "^6.9.3"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
@@ -43,8 +45,12 @@
   },
   "mocha": {
     "reporter": "spec",
-    "extension": ["ts"],
-    "require": ["ts-node/register"]
+    "extension": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
   },
   "keywords": [
     "web",

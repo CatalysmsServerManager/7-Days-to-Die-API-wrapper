@@ -1,4 +1,5 @@
-import {stringify,ParsedUrlQueryInput} from "querystring";
+import {ParsedUrlQueryInput} from "querystring";
+import {stringify} from "qs";
 import fetch, { RequestInit } from "node-fetch"
 import * as responses from './responses'
 
@@ -22,8 +23,8 @@ export function getBaseUrl(server: SdtdServer): string {
     return `${scheme}://${server.ip}:${server.port}`;
 }
 
-async function fetchJson(server: SdtdServer, url: string, qs: ParsedUrlQueryInput, fetchOpts?: RequestInit) {
-    const uri = getBaseUrl(server) + url + '?' + stringify(qs);;
+async function fetchJson(server: SdtdServer, url: string, qs: any, fetchOpts?: RequestInit) {
+    const uri = getBaseUrl(server) + url + '?' + stringify(qs, { skipNulls: true });
     return await fetch(uri, fetchOpts).then(res => res.json())
 }
 
@@ -58,7 +59,7 @@ export async function getHostileLocation(server: SdtdServer, fetchOpts?: Request
 }
 
 export async function getLandClaims(server: SdtdServer, steamId?: string, fetchOpts?: RequestInit) {
-    const response = await fetchJson(server, `/api/getlandclaims`, { adminuser: server.adminUser,admintoken: server.adminToken}, fetchOpts)
+    const response = await fetchJson(server, `/api/getlandclaims`, { adminuser: server.adminUser,admintoken: server.adminToken, steamid: steamId}, fetchOpts)
     return response as Array<responses.landClaimsResponse>
 }
 
