@@ -47,15 +47,15 @@ export async function executeConsoleCommand(server: SdtdServer, command: string,
     return fetchJson(server, `/api/executeconsolecommand`, { adminuser: server.adminUser,admintoken: server.adminToken, command: command }, fetchOpts)
 }
 
-export async function getAnimalsLocation(server: SdtdServer, fetchOpts?: RequestInit): Promise<Array<responses.entityLocation>> {
+export async function getAnimalsLocation(server: SdtdServer, fetchOpts?: RequestInit): Promise<Array<responses.EntityLocation>> {
     return fetchJson(server, `/api/getanimalslocation`, { adminuser: server.adminUser,admintoken: server.adminToken}, fetchOpts)
 }
 
-export async function getHostileLocation(server: SdtdServer, fetchOpts?: RequestInit): Promise<Array<responses.entityLocation>> {
+export async function getHostileLocation(server: SdtdServer, fetchOpts?: RequestInit): Promise<Array<responses.EntityLocation>> {
     return fetchJson(server, `/api/gethostilelocation`, { adminuser: server.adminUser,admintoken: server.adminToken}, fetchOpts)
 }
 
-export async function getLandClaims(server: SdtdServer, steamId?: string, fetchOpts?: RequestInit): Promise<Array<responses.landClaimsResponse>> {
+export async function getLandClaims(server: SdtdServer, steamId?: string, fetchOpts?: RequestInit): Promise<Array<responses.LandClaimsResponse>> {
     return fetchJson(server, `/api/getlandclaims`, { adminuser: server.adminUser,admintoken: server.adminToken, steamid: steamId}, fetchOpts)
 }
 
