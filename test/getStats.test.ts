@@ -27,6 +27,6 @@ describe('/api/getstats', async () => {
 
     it('Accepts extra options', async () => {
         // If 7d2d server runs on same machine as you are running tests, this 1 ms timeout is sometimes not enough.
-        await chai.expect(getStats(testServer, {timeout: 1})).to.be.rejectedWith(Error)
+        await chai.expect(getStats(testServer, { timeout: 1 })).to.be.rejectedWith(Error)
     });
 });
