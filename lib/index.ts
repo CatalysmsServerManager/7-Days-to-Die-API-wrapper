@@ -67,7 +67,7 @@ export async function getPlayerInventories(server: SdtdServer, fetchOpts?: Reque
     return fetchJson(server, `/api/getplayerinventories`, { adminuser: server.adminUser,admintoken: server.adminToken}, fetchOpts)
 }
 
-export async function getPlayerList(server: SdtdServer, rowsPerPage: number, page: number, fetchOpts?: RequestInit): Promise<Array<responses.getPlayerListResponse>> {
+export async function getPlayerList(server: SdtdServer, rowsPerPage: number, page: number, fetchOpts?: RequestInit): Promise<Array<responses.PlayerListResponse>> {
     return fetchJson(server, `/api/getplayerlist`, { adminuser: server.adminUser,admintoken: server.adminToken, rowsperpage: rowsPerPage, page: page}, fetchOpts)
 }
 
