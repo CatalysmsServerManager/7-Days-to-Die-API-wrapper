@@ -37,13 +37,13 @@ export interface OnlinePlayerResponse {
     ping: number
 }
 
-export interface entityLocation {
+export interface EntityLocation {
     id : number,
     name: string,
     position: Position
 }
 
-export interface landClaimsResponse {
+export interface LandClaimsResponse {
     claimsize: number,
     claimowners: Array < ClaimOwner >
 }
