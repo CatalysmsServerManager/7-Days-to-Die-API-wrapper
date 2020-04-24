@@ -91,7 +91,7 @@ export interface PlayerEquipment {
     gloves: any
 }
 
-export interface getPlayerListResponse {
+export interface PlayerListResponse {
     total: number,
     totalUnfiltered: number,
     firstResult: number,
