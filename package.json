@@ -15,11 +15,11 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.5.2",
     "@types/chai": "^4.1.4",
     "@types/chai-as-promised": "^7.1.0",
     "@types/mocha": "^7.0.0",
-    "@types/node": "^13.1.0",
+    "@types/node": "^13.13.2",
+    "@types/node-fetch": "^2.5.2",
     "@types/snekfetch": "^4.0.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",

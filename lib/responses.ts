@@ -18,11 +18,11 @@ export interface Position {
 }
 
 export interface OnlinePlayerResponse {
-    steamid: String,
+    steamid: string,
     entityid: Number,
-    ip: String,
-    name: String,
-    online: Boolean,
+    ip: string,
+    name: string,
+    online: boolean,
     position: Position,
     experience: Number,
     level: Number,
@@ -33,13 +33,13 @@ export interface OnlinePlayerResponse {
     playerdeaths: Number,
     score: Number,
     totalplaytime: Number,
-    lastonline: String,
+    lastonline: string,
     ping: Number
 }
 
 export interface entityLocation {
     id : Number,
-    name: String,
+    name: string,
     position: Position
 }
 
@@ -49,16 +49,16 @@ export interface landClaimsResponse {
 }
 
 export interface ClaimOwner {
-    steamid: String,
-    claimactive: Boolean,
-    playername: String,
+    steamid: string,
+    claimactive: boolean,
+    playername: string,
     claims: Array < Position >
 }
 
 export interface CommandResponse {
-    command: String,
-    parameters: String,
-    result: String
+    command: string,
+    parameters: string,
+    result: string
 }
 
 export interface AllowedCommands {
@@ -66,13 +66,13 @@ export interface AllowedCommands {
 } 
 
 export interface CommandEntry {
-    command: String,
-    description: String,
-    help: String
+    command: string,
+    description: string,
+    help: string
 }
 
 export interface InventoryResponse {
-    playername: String,
+    playername: string,
     bag: Array < any >,
     belt: Array < any >,
     equipment: PlayerEquipment,
@@ -99,22 +99,22 @@ export interface getPlayerListResponse {
 }
 
 export interface PlayerNotOnline {
-    steamid: String,
+    steamid: string,
     entityid: Number,
-    ip: String,
-    name: String,
-    online: Boolean,
+    ip: string,
+    name: string,
+    online: boolean,
     position: Position,
     totalplaytime: Number,
-    lastonline: String,
+    lastonline: string,
     ping: Number,
-    banned: Boolean
+    banned: boolean
 }
 
 export interface PlayerLocation {
-    steamid: String,
-    name: String,
-    online: Boolean,
+    steamid: string,
+    name: string,
+    online: boolean,
     position: Position
 }
 
@@ -174,7 +174,7 @@ export interface GetServerInfo {
 }
 
 export interface GetServerInfoEntry {
-    type: String,
+    type: string,
     value: any
 }
 
@@ -187,12 +187,12 @@ export interface GetWebUIUpdatesResponse {
 }
 
 export interface LogLine {
-    date: String,
-    time: String,
-    uptime: String,
-    msg: String,
-    trace: String,
-    type: String
+    date: string,
+    time: string,
+    uptime: string,
+    msg: string,
+    trace: string,
+    type: string
 }
 
 export interface GetLog {
