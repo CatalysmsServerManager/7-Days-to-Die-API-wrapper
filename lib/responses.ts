@@ -1,50 +1,50 @@
 export interface GameTime {
-    days: Number,
-    hours: Number,
-    minutes: Number
+    days: number,
+    hours: number,
+    minutes: number
 }
 
 export interface StatsResponse {
     gametime: GameTime,
-    players: Number,
-    hostiles: Number,
-    animals: Number
+    players: number,
+    hostiles: number,
+    animals: number
 }
 
 export interface Position {
-    x: Number,
-    y: Number,
-    z: Number
+    x: number,
+    y: number,
+    z: number
 }
 
 export interface OnlinePlayerResponse {
     steamid: string,
-    entityid: Number,
+    entityid: number,
     ip: string,
     name: string,
     online: boolean,
     position: Position,
-    experience: Number,
-    level: Number,
-    health: Number,
-    stamina: Number,
-    zombiekills: Number,
-    playerkills: Number,
-    playerdeaths: Number,
-    score: Number,
-    totalplaytime: Number,
+    experience: number,
+    level: number,
+    health: number,
+    stamina: number,
+    zombiekills: number,
+    playerkills: number,
+    playerdeaths: number,
+    score: number,
+    totalplaytime: number,
     lastonline: string,
-    ping: Number
+    ping: number
 }
 
 export interface entityLocation {
-    id : Number,
+    id : number,
     name: string,
     position: Position
 }
 
 export interface landClaimsResponse {
-    claimsize: Number,
+    claimsize: number,
     claimowners: Array < ClaimOwner >
 }
 
@@ -92,22 +92,22 @@ export interface PlayerEquipment {
 }
 
 export interface getPlayerListResponse {
-    total: Number,
-    totalUnfiltered: Number,
-    firstResult: Number,
+    total: number,
+    totalUnfiltered: number,
+    firstResult: number,
     players: Array < PlayerNotOnline >
 }
 
 export interface PlayerNotOnline {
     steamid: string,
-    entityid: Number,
+    entityid: number,
     ip: string,
     name: string,
     online: boolean,
     position: Position,
-    totalplaytime: Number,
+    totalplaytime: number,
     lastonline: string,
-    ping: Number,
+    ping: number,
     banned: boolean
 }
 
@@ -180,10 +180,10 @@ export interface GetServerInfoEntry {
 
 export interface GetWebUIUpdatesResponse {
     gametime: GameTime,
-    players: Number,
-    hostiles: Number,
-    animals: Number,
-    newlogs: Number
+    players: number,
+    hostiles: number,
+    animals: number,
+    newlogs: number
 }
 
 export interface LogLine {
@@ -196,7 +196,7 @@ export interface LogLine {
 }
 
 export interface GetLog {
-    firstLine: Number,
-    lastLine: Number,
+    firstLine: number,
+    lastLine: number,
     entries: Array < LogLine >
 }
