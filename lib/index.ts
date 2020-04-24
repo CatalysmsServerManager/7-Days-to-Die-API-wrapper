@@ -23,7 +23,10 @@ export function getBaseUrl(server: SdtdServer): string {
     return `${scheme}://${server.ip}:${server.port}`;
 }
 
-async function fetchJson(server: SdtdServer, url: string, qs: ParsedUrlQueryInput, fetchOpts?: RequestInit) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type json = any;
+
+async function fetchJson(server: SdtdServer, url: string, qs: ParsedUrlQueryInput, fetchOpts?: RequestInit): Promise<json> {
     const uri = getBaseUrl(server) + url + '?' + stringify(qs, { skipNulls: true });
     return fetch(uri, fetchOpts).then(res => res.json())
 }
