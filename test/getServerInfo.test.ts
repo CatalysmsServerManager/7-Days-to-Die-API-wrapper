@@ -1,14 +1,13 @@
 'use strict';
 import * as chai from 'chai'
 import * as chaiAsPromised from 'chai-as-promised'
-import { SdtdServer } from '../lib/index'
-let SdtdApi = require('../lib/index');
+import { getServerInfo, SdtdServer } from '../lib/index'
 
 require('dotenv').config()
 
 chai.use(chaiAsPromised)
 
-let testServer: SdtdServer = {
+const testServer: SdtdServer = {
     ip: process.env.TESTIP as string,
     port: process.env.TESTPORT as string,
     adminUser: process.env.TESTADMINUSER as string,
@@ -16,7 +15,7 @@ let testServer: SdtdServer = {
 }
 describe('/api/getServerInfo', async () => {
     it('Returns expected output', async () => {
-        let response = await SdtdApi.getServerInfo(testServer);
+        const response = await getServerInfo(testServer);
         chai.expect(response.GameType.value).to.be.a('string');
         chai.expect(response.GameName.value).to.be.a('string');
         chai.expect(response.GameHost.value).to.be.a('string');

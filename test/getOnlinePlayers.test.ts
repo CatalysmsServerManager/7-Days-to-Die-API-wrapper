@@ -1,14 +1,13 @@
 'use strict';
 import * as chai from 'chai'
 import * as chaiAsPromised from 'chai-as-promised'
-import { SdtdServer } from '../lib/index'
-let SdtdApi = require('../lib/index');
+import { getOnlinePlayers, SdtdServer } from '../lib/index'
 
 require('dotenv').config()
 
 chai.use(chaiAsPromised)
 
-let testServer: SdtdServer = {
+const testServer: SdtdServer = {
     ip: process.env.TESTIP as string,
     port: process.env.TESTPORT as string,
     adminUser: process.env.TESTADMINUSER as string,
@@ -17,15 +16,15 @@ let testServer: SdtdServer = {
 
 describe('/api/getOnlinePlayers', async () => {
     it('Returns an array of player info', async () => {
-        let response = await SdtdApi.getOnlinePlayers(testServer);
+        const response = await getOnlinePlayers(testServer);
         chai.expect(response).to.be.an('array');
     });
 
     it('Contains identifying information for players', async () => {
-        let response = await SdtdApi.getOnlinePlayers(testServer);
+        const response = await getOnlinePlayers(testServer);
 
         if (response.length > 0) {
-            let playerStats = response[0];
+            const playerStats = response[0];
 
             chai.expect(playerStats.steamid).to.be.a('string').and.to.be.not.empty;
             chai.expect(playerStats.name).to.be.a('string').and.to.be.not.empty;
@@ -34,10 +33,10 @@ describe('/api/getOnlinePlayers', async () => {
     });
 
     it('Contains location data', async () => {
-        let response = await SdtdApi.getOnlinePlayers(testServer);
+        const response = await getOnlinePlayers(testServer);
 
         if (response.length > 0) {
-            let playerStats = response[0];
+            const playerStats = response[0];
 
             chai.expect(playerStats.position.x).to.be.a('number');
             chai.expect(playerStats.position.y).to.be.a('number');
@@ -46,10 +45,10 @@ describe('/api/getOnlinePlayers', async () => {
     });
 
     it('Contains kills deaths score experience and level data', async () => {
-        let response = await SdtdApi.getOnlinePlayers(testServer);
+        const response = await getOnlinePlayers(testServer);
 
         if (response.length > 0) {
-            let playerStats = response[0];
+            const playerStats = response[0];
 
             chai.expect(playerStats.experience).to.be.a('number');
             chai.expect(playerStats.level).to.be.a('number');
