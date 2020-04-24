@@ -2,7 +2,7 @@
 import * as chai from 'chai'
 import * as chaiAsPromised from 'chai-as-promised'
 import { SdtdServer } from '../lib/index'
-let SdtdApi = require('../lib/index.js');
+let SdtdApi = require('../lib/index');
 
 require('dotenv').config()
 
