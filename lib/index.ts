@@ -59,7 +59,7 @@ export async function getLandClaims(server: SdtdServer, steamId?: string, fetchO
     return fetchJson(server, `/api/getlandclaims`, { adminuser: server.adminUser,admintoken: server.adminToken, steamid: steamId}, fetchOpts)
 }
 
-export async function getPlayerInventory(server: SdtdServer, steamId: string, fetchOpts?: RequestInit): Promise<Array<responses.InventoryResponse>> {
+export async function getPlayerInventory(server: SdtdServer, steamId: string, fetchOpts?: RequestInit): Promise<responses.InventoryResponse> {
     return fetchJson(server, `/api/getplayerinventory`, { adminuser: server.adminUser,admintoken: server.adminToken, steamid: steamId}, fetchOpts)
 }
 
@@ -67,7 +67,7 @@ export async function getPlayerInventories(server: SdtdServer, fetchOpts?: Reque
     return fetchJson(server, `/api/getplayerinventories`, { adminuser: server.adminUser,admintoken: server.adminToken}, fetchOpts)
 }
 
-export async function getPlayerList(server: SdtdServer, rowsPerPage?: number, page?: number, fetchOpts?: RequestInit): Promise<Array<responses.PlayerListResponse>> {
+export async function getPlayerList(server: SdtdServer, rowsPerPage?: number, page?: number, fetchOpts?: RequestInit): Promise<responses.PlayerListResponse> {
     return fetchJson(server, `/api/getplayerlist`, { adminuser: server.adminUser,admintoken: server.adminToken, rowsperpage: rowsPerPage, page: page}, fetchOpts)
 }
 
