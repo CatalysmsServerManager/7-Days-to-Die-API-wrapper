@@ -55,7 +55,7 @@ export async function getHostileLocation(server: SdtdServer, fetchOpts?: Request
     return fetchJson(server, `/api/gethostilelocation`, { adminuser: server.adminUser,admintoken: server.adminToken}, fetchOpts)
 }
 
-export async function getLandClaims(server: SdtdServer, steamId?: string, fetchOpts?: RequestInit): Promise<Array<responses.LandClaimsResponse>> {
+export async function getLandClaims(server: SdtdServer, steamId?: string, fetchOpts?: RequestInit): Promise<responses.LandClaimsResponse> {
     return fetchJson(server, `/api/getlandclaims`, { adminuser: server.adminUser,admintoken: server.adminToken, steamid: steamId}, fetchOpts)
 }
 
