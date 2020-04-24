@@ -67,7 +67,7 @@ export async function getPlayerInventories(server: SdtdServer, fetchOpts?: Reque
     return fetchJson(server, `/api/getplayerinventories`, { adminuser: server.adminUser,admintoken: server.adminToken}, fetchOpts)
 }
 
-export async function getPlayerList(server: SdtdServer, rowsPerPage: number, page: number, fetchOpts?: RequestInit): Promise<Array<responses.PlayerListResponse>> {
+export async function getPlayerList(server: SdtdServer, rowsPerPage?: number, page?: number, fetchOpts?: RequestInit): Promise<Array<responses.PlayerListResponse>> {
     return fetchJson(server, `/api/getplayerlist`, { adminuser: server.adminUser,admintoken: server.adminToken, rowsperpage: rowsPerPage, page: page}, fetchOpts)
 }
 
@@ -79,7 +79,7 @@ export async function getServerInfo(server: SdtdServer, fetchOpts?: RequestInit)
     return fetchJson(server, `/api/getserverinfo`, { adminuser: server.adminUser,admintoken: server.adminToken}, fetchOpts)
 }
 
-export async function getWebUIUpdates(server: SdtdServer, latestLine: number, fetchOpts?: RequestInit): Promise<responses.GetWebUIUpdatesResponse> {
+export async function getWebUIUpdates(server: SdtdServer, latestLine?: number, fetchOpts?: RequestInit): Promise<responses.GetWebUIUpdatesResponse> {
     return fetchJson(server, `/api/getwebuiupdates`, { adminuser: server.adminUser,admintoken: server.adminToken, latestLine: latestLine}, fetchOpts)
 }
 
