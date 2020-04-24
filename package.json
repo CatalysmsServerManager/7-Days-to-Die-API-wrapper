@@ -33,14 +33,18 @@
     "typescript": "^3.5.2"
   },
   "scripts": {
-    "pretest": "npm run build",
-    "test": "mocha dist/test/*.js --reporter spec",
+    "test": "mocha test",
     "build": "tsc -D",
     "build-watch": "tsc --watch",
     "docs": "typedoc --out docs/ lib/ --theme minimal --name '7 Days to Die API wrapper' --includeDeclarations --excludeExternals --exclude lib/getStats.ts",
     "postdocs": "shx cp .nojekyll docs/.nojekyll",
     "precover": "npm run build",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha dist/test/*.js -- -R spec"
+  },
+  "mocha": {
+    "reporter": "spec",
+    "extension": ["ts"],
+    "require": ["ts-node/register"]
   },
   "keywords": [
     "web",
