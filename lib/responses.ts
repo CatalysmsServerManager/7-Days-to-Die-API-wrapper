@@ -75,7 +75,7 @@ export interface InventoryResponse {
     playername: string,
     bag: Array < any >,
     belt: Array < any >,
-    equipment: PlayerEquipment,
+    equipment: PlayerEquipment
 }
 
 export interface PlayerEquipment {
@@ -162,7 +162,7 @@ export interface GetServerInfo {
     IsDedicated: GetServerInfoEntry,
     IsPasswordProtected: GetServerInfoEntry,
     ShowFriendPlayerOnMap: GetServerInfoEntry,
-    BuildCreate: GetServerInfoEntry
+    BuildCreate: GetServerInfoEntry,
     EACEnabled: GetServerInfoEntry,
     Architecture64: GetServerInfoEntry,
     StockSettings: GetServerInfoEntry,
