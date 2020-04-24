@@ -38,7 +38,7 @@ export interface OnlinePlayerResponse {
 }
 
 export interface EntityLocation {
-    id : number,
+    id: number,
     name: string,
     position: Position
 }
