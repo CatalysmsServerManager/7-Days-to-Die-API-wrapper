@@ -2,6 +2,7 @@
 import * as chai from 'chai'
 import * as chaiAsPromised from 'chai-as-promised'
 import { executeConsoleCommand, SdtdServer } from '../lib/index'
+import { fail } from 'assert';
 
 require('dotenv').config()
 
@@ -26,5 +27,13 @@ describe('/api/executeconsolecommand', async () => {
         chai.expect(response.command).to.eq('help')
         chai.expect(response.parameters).to.eq('');
         chai.expect(response.result).to.include("*** Generic Console Help ***")
+    });
+    it('Executes a an unknown command - foobar', async () => {
+        try {
+            const response = await executeConsoleCommand(testServer, "foobar");
+            fail('should have failed');
+        } catch(e) {
+            chai.expect(e).to.be.a('error');
+        }
     });
 });

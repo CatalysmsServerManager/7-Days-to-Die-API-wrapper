@@ -28,7 +28,20 @@ type json = any;
 
 async function fetchJson(server: SdtdServer, url: string, qs: ParsedUrlQueryInput, fetchOpts?: RequestInit): Promise<json> {
     const uri = getBaseUrl(server) + url + '?' + stringify(qs, { skipNulls: true });
-    return fetch(uri, fetchOpts).then(res => res.json())
+    return fetch(uri, fetchOpts)
+    .then(function(response) {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response;
+    }).then(response => {
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+            return response.json();
+        } else {
+            return response.text();
+        }
+    })
 }
 
 export async function getStats(server: SdtdServer, fetchOpts?: RequestInit): Promise<responses.StatsResponse> {
