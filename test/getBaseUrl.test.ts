@@ -1,9 +1,9 @@
 'use strict';
-import * as chai from 'chai'
-import * as chaiAsPromised from 'chai-as-promised'
-import { getBaseUrl } from '../lib/index'
+import * as chai from 'chai';
+import * as chaiAsPromised from 'chai-as-promised';
+import { getBaseUrl } from '../lib/index';
 
-chai.use(chaiAsPromised)
+chai.use(chaiAsPromised);
 
 describe('getBaseUrl', async () => {
     it('standard returns http', async () => {

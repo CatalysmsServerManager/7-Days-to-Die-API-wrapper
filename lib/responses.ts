@@ -45,14 +45,14 @@ export interface EntityLocation {
 
 export interface LandClaimsResponse {
     claimsize: number,
-    claimowners: Array < ClaimOwner >
+    claimowners: Array<ClaimOwner>
 }
 
 export interface ClaimOwner {
     steamid: string,
     claimactive: boolean,
     playername: string,
-    claims: Array < Position >
+    claims: Array<Position>
 }
 
 export interface CommandResponse {
@@ -62,8 +62,8 @@ export interface CommandResponse {
 }
 
 export interface AllowedCommands {
-    commands: Array< CommandEntry >
-} 
+    commands: Array<CommandEntry>
+}
 
 export interface CommandEntry {
     command: string,
@@ -73,11 +73,13 @@ export interface CommandEntry {
 
 export interface InventoryResponse {
     playername: string,
-    bag: Array < any >,
-    belt: Array < any >,
+    bag: Array<any>, // eslint-disable-line
+    belt: Array<any>, // eslint-disable-line
     equipment: PlayerEquipment
 }
 
+// TODO: some generic interface for this perhaps?
+/* eslint-disable */
 export interface PlayerEquipment {
     head: any,
     eyes: any,
@@ -90,12 +92,13 @@ export interface PlayerEquipment {
     boots: any,
     gloves: any
 }
+/* eslint-enable */
 
 export interface PlayerListResponse {
     total: number,
     totalUnfiltered: number,
     firstResult: number,
-    players: Array < PlayerNotOnline >
+    players: Array<PlayerNotOnline>
 }
 
 export interface PlayerNotOnline {
@@ -175,7 +178,7 @@ export interface GetServerInfo {
 
 export interface GetServerInfoEntry {
     type: string,
-    value: any
+    value: any // eslint-disable-line
 }
 
 export interface GetWebUIUpdatesResponse {
@@ -198,5 +201,5 @@ export interface LogLine {
 export interface GetLog {
     firstLine: number,
     lastLine: number,
-    entries: Array < LogLine >
+    entries: Array<LogLine>
 }
