@@ -1,18 +1,18 @@
 'use strict';
-import * as chai from 'chai'
-import * as chaiAsPromised from 'chai-as-promised'
-import { getAnimalsLocation, SdtdServer } from '../lib/index'
+import * as chai from 'chai';
+import * as chaiAsPromised from 'chai-as-promised';
+import { getAnimalsLocation, SdtdServer } from '../lib/index';
 
-require('dotenv').config()
+require('dotenv').config();
 
-chai.use(chaiAsPromised)
+chai.use(chaiAsPromised);
 
 const testServer: SdtdServer = {
     ip: process.env.TESTIP as string,
     port: process.env.TESTPORT as string,
     adminUser: process.env.TESTADMINUSER as string,
     adminToken: process.env.TESTADMINTOKEN as string
-}
+};
 
 describe('/api/getAnimalsLocation', async () => {
     it('Returns an array of animal info', async () => {
