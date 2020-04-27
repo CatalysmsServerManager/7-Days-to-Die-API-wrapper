@@ -11,6 +11,9 @@ const tapesDir = path.join(__dirname, '..', 'test', 'tapes');
 const files = fs.readdirSync(tapesDir);
 
 const replaceIP = (obj) => {
+    if (!obj) {
+        return;
+    }
     if (typeof obj !== 'object') {
         return;
     }
@@ -24,10 +27,11 @@ const replaceIP = (obj) => {
 
 for (const file of files) {
     const fullFilename = path.join(tapesDir, file);
-    if (fs.readFileSync(fullFilename).toString().includes('ip:')) {
-        const data = JSON5.parse(fs.readFileSync(fullFilename).toString());
-        replaceIP(data);
-        fs.writeFileSync(fullFilename, JSON5.stringify(data, null, 4));
+    const data = JSON5.parse(fs.readFileSync(fullFilename).toString());
+    replaceIP(data);
+    if (data.meta && data.meta.host) {
+        data.meta.host = data.meta.host.replace(/\d+\.\d+.\d+\.\d+/, '1.1.1.1');
     }
+    fs.writeFileSync(fullFilename, JSON5.stringify(data, null, 4));
 }
 
