@@ -1,9 +1,7 @@
 'use strict';
+import './_globals';
 import * as chai from 'chai';
-import * as chaiAsPromised from 'chai-as-promised';
 import { getBaseUrl } from '../lib/index';
-
-chai.use(chaiAsPromised);
 
 describe('getBaseUrl', async () => {
     it('standard returns http', async () => {

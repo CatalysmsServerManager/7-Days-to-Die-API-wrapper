@@ -1,27 +1,16 @@
 'use strict';
+import g from './_globals';
 import * as chai from 'chai';
-import * as chaiAsPromised from 'chai-as-promised';
-import { getOnlinePlayers, SdtdServer } from '../lib/index';
-
-require('dotenv').config();
-
-chai.use(chaiAsPromised);
-
-const testServer: SdtdServer = {
-    ip: process.env.TESTIP as string,
-    port: process.env.TESTPORT as string,
-    adminUser: process.env.TESTADMINUSER as string,
-    adminToken: process.env.TESTADMINTOKEN as string
-};
+import { getOnlinePlayers } from '../lib/index';
 
 describe('/api/getOnlinePlayers', async () => {
     it('Returns an array of player info', async () => {
-        const response = await getOnlinePlayers(testServer);
+        const response = await getOnlinePlayers(g.getTestServer());
         chai.expect(response).to.be.an('array');
     });
 
     it('Contains identifying information for players', async () => {
-        const response = await getOnlinePlayers(testServer);
+        const response = await getOnlinePlayers(g.getTestServer());
 
         if (response.length > 0) {
             const playerStats = response[0];
@@ -33,7 +22,7 @@ describe('/api/getOnlinePlayers', async () => {
     });
 
     it('Contains location data', async () => {
-        const response = await getOnlinePlayers(testServer);
+        const response = await getOnlinePlayers(g.getTestServer());
 
         if (response.length > 0) {
             const playerStats = response[0];
@@ -45,7 +34,7 @@ describe('/api/getOnlinePlayers', async () => {
     });
 
     it('Contains kills deaths score experience and level data', async () => {
-        const response = await getOnlinePlayers(testServer);
+        const response = await getOnlinePlayers(g.getTestServer());
 
         if (response.length > 0) {
             const playerStats = response[0];

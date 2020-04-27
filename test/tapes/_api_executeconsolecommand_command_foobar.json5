@@ -1,0 +1,39 @@
+{
+    meta: {
+        createdAt: '2020-04-27T00:03:01.915Z',
+        host: 'http://78.46.203.193:8082',
+        resHumanReadable: true,
+    },
+    req: {
+        url: '/api/executeconsolecommand?command=foobar',
+        method: 'GET',
+        headers: {
+            accept: '*/*',
+            'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
+            'accept-encoding': 'gzip,deflate',
+            connection: 'close',
+        },
+        body: '',
+    },
+    res: {
+        status: 404,
+        headers: {
+            'content-type': [
+                'text/html; charset=utf-8',
+            ],
+            server: [
+                'Mono-HTTPAPI/1.0',
+            ],
+            date: [
+                'Mon, 27 Apr 2020 00:03:02 GMT',
+            ],
+            'content-length': [
+                '15',
+            ],
+            connection: [
+                'close',
+            ],
+        },
+        body: 'Unknown command',
+    },
+}
