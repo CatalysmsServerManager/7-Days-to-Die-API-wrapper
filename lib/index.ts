@@ -13,14 +13,19 @@ export interface SdtdServer {
 
 export function getBaseUrl(server: SdtdServer): string {
     let scheme = "http";
+    let needsPort = true;
     if (server.forceHttps === true) {
         scheme = "https";
     } else if (server.forceHttps === false) {
         scheme = "http";
     } else if (parseInt(server.port) === 443) {
+        needsPort = false;
         scheme = "https";
+    } else if (parseInt(server.port) === 80) {
+        needsPort = false;
+        scheme = "http";
     }
-    return `${scheme}://${server.ip}:${server.port}`;
+    return needsPort ? `${scheme}://${server.ip}:${server.port}` : `${scheme}://${server.ip}`;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
