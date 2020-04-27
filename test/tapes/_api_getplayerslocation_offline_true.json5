@@ -1,7 +1,7 @@
 {
     meta: {
         createdAt: '2020-04-27T18:32:07.192Z',
-        host: 'http://78.46.203.193:8082',
+        host: 'https://7d2d.csmm.app',
         resHumanReadable: true,
     },
     req: {

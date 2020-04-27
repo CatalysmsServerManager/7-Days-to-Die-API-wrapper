@@ -29,7 +29,7 @@ for (const file of files) {
     const data = JSON5.parse(fs.readFileSync(fullFilename).toString());
     replaceIP(data);
     if (data.meta && data.meta.host) {
-        data.meta.host = 'http://78.46.203.193:8082';
+        data.meta.host = 'https://7d2d.csmm.app';
     }
     fs.writeFileSync(fullFilename, JSON5.stringify(data, null, 4));
 }

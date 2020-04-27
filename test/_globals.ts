@@ -10,7 +10,7 @@ import TalkbackServer from 'talkback/server';
 import { RecordMode } from 'talkback/options';
 import Tape from 'talkback/tape';
 import { Req } from 'talkback/types';
-import { SdtdServer } from '../lib/index';
+import { SdtdServer, getBaseUrl } from '../lib/index';
 
 // talkback's typescript/import returns different stuff than the require, so disable the eslint alert for now
 //eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -27,7 +27,12 @@ class TestGlobals {
             adminUser: 'fakeadminuser',
             adminToken: 'fakeadmintoken'
         };
-        const host = `http://${process.env.TESTIP || '78.46.203.193'}:${process.env.TESTPORT || '8082'}`;
+        const host = getBaseUrl({
+            ip: process.env.TESTIP || '7d2d.csmm.app',
+            port: process.env.TESTPORT || '443',
+            adminUser: '',
+            adminToken: ''
+        });
         this.proxy = talkback({
             host: host,
             record: RecordMode.NEW,

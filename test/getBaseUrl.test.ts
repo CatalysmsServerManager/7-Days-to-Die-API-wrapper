@@ -12,7 +12,12 @@ describe('getBaseUrl', async () => {
     it('standard but port 443 returns https', async () => {
         chai.expect(
             getBaseUrl({ ip: '192.168.1.1', port: '443', adminUser: 'foo', adminToken: 'bar' })
-        ).to.eql('https://192.168.1.1:443');
+        ).to.eql('https://192.168.1.1');
+    });
+    it('standard but port 80 returns http', async () => {
+        chai.expect(
+            getBaseUrl({ ip: '192.168.1.1', port: '80', adminUser: 'foo', adminToken: 'bar' })
+        ).to.eql('http://192.168.1.1');
     });
     it('forced true returns https', async () => {
         chai.expect(
