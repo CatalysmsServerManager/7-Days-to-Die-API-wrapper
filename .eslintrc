@@ -34,6 +34,15 @@
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended"
     ],
+    "overrides": [
+        {
+            "files": ["**/*.js"],
+            "rules": {
+                "@typescript-eslint/no-var-requires": ["off"],
+                "@typescript-eslint/explicit-function-return-type": ["off"]
+            }
+        }
+    ],
     "rules": {
         "semi": "off",
         "@typescript-eslint/semi": ["error"],
