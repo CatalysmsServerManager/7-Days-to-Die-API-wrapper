@@ -1,0 +1,49 @@
+{
+    meta: {
+        createdAt: '2020-04-27T18:32:08.385Z',
+        host: 'http://78.46.203.193:8082',
+        resHumanReadable: true,
+    },
+    req: {
+        url: '/api/getwebuiupdates?latestLine=-24',
+        method: 'GET',
+        headers: {
+            accept: '*/*',
+            'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
+            'accept-encoding': 'gzip,deflate',
+            connection: 'close',
+        },
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            'content-type': [
+                'application/json; charset=utf-8',
+            ],
+            server: [
+                'Mono-HTTPAPI/1.0',
+            ],
+            date: [
+                'Mon, 27 Apr 2020 18:32:08 GMT',
+            ],
+            'content-length': [
+                '98',
+            ],
+            connection: [
+                'close',
+            ],
+        },
+        body: {
+            gametime: {
+                days: 39,
+                hours: 22,
+                minutes: 19,
+            },
+            players: 0,
+            hostiles: 0,
+            animals: 0,
+            newlogs: 75,
+        },
+    },
+}
