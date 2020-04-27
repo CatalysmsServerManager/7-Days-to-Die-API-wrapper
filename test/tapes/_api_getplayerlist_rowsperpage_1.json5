@@ -1,0 +1,61 @@
+{
+    meta: {
+        createdAt: '2020-04-27T18:32:06.604Z',
+        host: 'http://78.46.203.193:8082',
+        resHumanReadable: true,
+    },
+    req: {
+        url: '/api/getplayerlist?rowsperpage=1',
+        method: 'GET',
+        headers: {
+            accept: '*/*',
+            'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
+            'accept-encoding': 'gzip,deflate',
+            connection: 'close',
+        },
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            'content-type': [
+                'application/json; charset=utf-8',
+            ],
+            server: [
+                'Mono-HTTPAPI/1.0',
+            ],
+            date: [
+                'Mon, 27 Apr 2020 18:32:06 GMT',
+            ],
+            'content-length': [
+                '282',
+            ],
+            connection: [
+                'close',
+            ],
+        },
+        body: {
+            total: 12,
+            totalUnfiltered: 12,
+            firstResult: 0,
+            players: [
+                {
+                    steamid: '76561198028175941',
+                    entityid: 171,
+                    ip: '5.28.58.65',
+                    name: 'Catalysm',
+                    online: false,
+                    position: {
+                        x: -972,
+                        y: 61,
+                        z: 145,
+                    },
+                    totalplaytime: 13968,
+                    lastonline: '2020-02-06T21:19:35Z',
+                    ping: -1,
+                    banned: true,
+                },
+            ],
+        },
+    },
+}

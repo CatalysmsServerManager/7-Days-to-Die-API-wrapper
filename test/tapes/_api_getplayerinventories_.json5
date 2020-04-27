@@ -1,0 +1,39 @@
+{
+    meta: {
+        createdAt: '2020-04-27T18:32:05.712Z',
+        host: 'http://78.46.203.193:8082',
+        resHumanReadable: true,
+    },
+    req: {
+        url: '/api/getplayerinventories',
+        method: 'GET',
+        headers: {
+            accept: '*/*',
+            'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
+            'accept-encoding': 'gzip,deflate',
+            connection: 'close',
+        },
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            'content-type': [
+                'application/json; charset=utf-8',
+            ],
+            server: [
+                'Mono-HTTPAPI/1.0',
+            ],
+            date: [
+                'Mon, 27 Apr 2020 18:32:05 GMT',
+            ],
+            'content-length': [
+                '2',
+            ],
+            connection: [
+                'close',
+            ],
+        },
+        body: [],
+    },
+}

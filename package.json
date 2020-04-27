@@ -31,6 +31,7 @@
     "dotenv": "^8.0.0",
     "eslint": "^6.8.0",
     "husky": "^4.2.5",
+    "ip-to-int": "^0.3.1",
     "istanbul": "^0.4.5",
     "mocha": "^7.0.0",
     "shx": "^0.3.0",
@@ -42,6 +43,7 @@
   "scripts": {
     "lint": "eslint --ext .ts,.tsx --ignore-path ./.gitignore .",
     "test": "mocha test",
+    "sanitize:tapes": "node bin/sanitize-tapes.js",
     "build": "tsc -D",
     "build-watch": "tsc --watch",
     "docs": "typedoc --out docs/ lib/ --theme minimal --name '7 Days to Die API wrapper' --includeDeclarations --excludeExternals --exclude lib/getStats.ts",
@@ -72,8 +74,8 @@
   "license": "GPL-3.0",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run lint"
+      "pre-commit": "npm run lint && npm run sanitize:tapes",
+      "pre-push": "npm run lint && npm run sanitize:tapes"
     }
   }
 }

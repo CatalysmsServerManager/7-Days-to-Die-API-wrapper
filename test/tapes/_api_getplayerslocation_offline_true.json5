@@ -1,0 +1,150 @@
+{
+    meta: {
+        createdAt: '2020-04-27T18:32:07.192Z',
+        host: 'http://78.46.203.193:8082',
+        resHumanReadable: true,
+    },
+    req: {
+        url: '/api/getplayerslocation?offline=true',
+        method: 'GET',
+        headers: {
+            accept: '*/*',
+            'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
+            'accept-encoding': 'gzip,deflate',
+            connection: 'close',
+        },
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            'content-type': [
+                'application/json; charset=utf-8',
+            ],
+            server: [
+                'Mono-HTTPAPI/1.0',
+            ],
+            date: [
+                'Mon, 27 Apr 2020 18:32:07 GMT',
+            ],
+            'content-length': [
+                '1146',
+            ],
+            connection: [
+                'close',
+            ],
+        },
+        body: [
+            {
+                steamid: '76561198404553397',
+                name: 'ADIII104 G4skins.com',
+                online: false,
+                position: {
+                    x: 835,
+                    y: 71,
+                    z: -1374,
+                },
+            },
+            {
+                steamid: '76561198985527925',
+                name: 'SZWED',
+                online: false,
+                position: {
+                    x: -851,
+                    y: 62,
+                    z: 627,
+                },
+            },
+            {
+                steamid: '76561198076262403',
+                name: 'Rock20g',
+                online: false,
+                position: {
+                    x: -1154,
+                    y: 54,
+                    z: -58,
+                },
+            },
+            {
+                steamid: '76561198056785503',
+                name: 'kulaba*NC',
+                online: false,
+                position: {
+                    x: -1552,
+                    y: 65,
+                    z: 319,
+                },
+            },
+            {
+                steamid: '76561198300628505',
+                name: 'Wolowitz',
+                online: false,
+                position: {
+                    x: -1553,
+                    y: 61,
+                    z: 309,
+                },
+            },
+            {
+                steamid: '76561198023139871',
+                name: 'butchershl',
+                online: false,
+                position: {
+                    x: -937,
+                    y: 53,
+                    z: 124,
+                },
+            },
+            {
+                steamid: '76561198282208171',
+                name: 'Otto',
+                online: false,
+                position: {
+                    x: -548,
+                    y: 66,
+                    z: 523,
+                },
+            },
+            {
+                steamid: '76561198975645868',
+                name: 'SchadeUmsBier.',
+                online: false,
+                position: {
+                    x: -956,
+                    y: 61,
+                    z: 61,
+                },
+            },
+            {
+                steamid: '76561197995688420',
+                name: 'Gunhead',
+                online: false,
+                position: {
+                    x: 1710,
+                    y: 76,
+                    z: 1211,
+                },
+            },
+            {
+                steamid: '76561198998415937',
+                name: 'No to to to to',
+                online: false,
+                position: {
+                    x: -701,
+                    y: 60,
+                    z: 169,
+                },
+            },
+            {
+                steamid: '76561198069010720',
+                name: 'gansvik11',
+                online: false,
+                position: {
+                    x: -936,
+                    y: 61,
+                    z: 631,
+                },
+            },
+        ],
+    },
+}

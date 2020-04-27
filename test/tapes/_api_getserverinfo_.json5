@@ -1,0 +1,316 @@
+{
+    meta: {
+        createdAt: '2020-04-27T18:32:07.486Z',
+        host: 'http://78.46.203.193:8082',
+        resHumanReadable: true,
+    },
+    req: {
+        url: '/api/getserverinfo',
+        method: 'GET',
+        headers: {
+            accept: '*/*',
+            'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
+            'accept-encoding': 'gzip,deflate',
+            connection: 'close',
+        },
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            'content-type': [
+                'application/json; charset=utf-8',
+            ],
+            server: [
+                'Mono-HTTPAPI/1.0',
+            ],
+            date: [
+                'Mon, 27 Apr 2020 18:32:07 GMT',
+            ],
+            'content-length': [
+                '3173',
+            ],
+            connection: [
+                'close',
+            ],
+        },
+        body: {
+            GameType: {
+                type: 'string',
+                value: '7DTD',
+            },
+            GameName: {
+                type: 'string',
+                value: 'My Game',
+            },
+            GameHost: {
+                type: 'string',
+                value: 'My Game Host',
+            },
+            ServerDescription: {
+                type: 'string',
+                value: 'A 7 Days to Die server',
+            },
+            ServerWebsiteURL: {
+                type: 'string',
+                value: '',
+            },
+            LevelName: {
+                type: 'string',
+                value: 'Navezgane',
+            },
+            GameMode: {
+                type: 'string',
+                value: 'Survival',
+            },
+            Version: {
+                type: 'string',
+                value: 'Alpha.18.4.4',
+            },
+            IP: {
+                type: 'string',
+                value: '78.46.203.193',
+            },
+            CountryCode: {
+                type: 'string',
+                value: 'XX',
+            },
+            SteamID: {
+                type: 'string',
+                value: '90134785560327177',
+            },
+            CompatibilityVersion: {
+                type: 'string',
+                value: 'Alpha 18.4',
+            },
+            Platform: {
+                type: 'string',
+                value: 'LinuxPlayer',
+            },
+            ServerLoginConfirmationText: {
+                type: 'string',
+                value: '',
+            },
+            Port: {
+                type: 'int',
+                value: 26900,
+            },
+            CurrentPlayers: {
+                type: 'int',
+                value: 0,
+            },
+            MaxPlayers: {
+                type: 'int',
+                value: 8,
+            },
+            GameDifficulty: {
+                type: 'int',
+                value: 2,
+            },
+            DayNightLength: {
+                type: 'int',
+                value: 60,
+            },
+            BloodMoonFrequency: {
+                type: 'int',
+                value: 7,
+            },
+            BloodMoonRange: {
+                type: 'int',
+                value: 0,
+            },
+            BloodMoonWarning: {
+                type: 'int',
+                value: 8,
+            },
+            ZombiesRun: {
+                type: 'int',
+                value: -1,
+            },
+            ZombieMove: {
+                type: 'int',
+                value: 0,
+            },
+            ZombieMoveNight: {
+                type: 'int',
+                value: 3,
+            },
+            ZombieFeralMove: {
+                type: 'int',
+                value: 3,
+            },
+            ZombieBMMove: {
+                type: 'int',
+                value: 3,
+            },
+            XPMultiplier: {
+                type: 'int',
+                value: 100,
+            },
+            DayCount: {
+                type: 'int',
+                value: 3,
+            },
+            Ping: {
+                type: 'int',
+                value: -1,
+            },
+            DropOnDeath: {
+                type: 'int',
+                value: 1,
+            },
+            DropOnQuit: {
+                type: 'int',
+                value: 0,
+            },
+            BloodMoonEnemyCount: {
+                type: 'int',
+                value: 8,
+            },
+            EnemyDifficulty: {
+                type: 'int',
+                value: 0,
+            },
+            PlayerKillingMode: {
+                type: 'int',
+                value: 3,
+            },
+            CurrentServerTime: {
+                type: 'int',
+                value: 934328,
+            },
+            DayLightLength: {
+                type: 'int',
+                value: 18,
+            },
+            BlockDurabilityModifier: {
+                type: 'int',
+                value: -1,
+            },
+            BlockDamagePlayer: {
+                type: 'int',
+                value: 100,
+            },
+            BlockDamageAI: {
+                type: 'int',
+                value: 100,
+            },
+            BlockDamageAIBM: {
+                type: 'int',
+                value: 100,
+            },
+            AirDropFrequency: {
+                type: 'int',
+                value: 72,
+            },
+            LootAbundance: {
+                type: 'int',
+                value: 100,
+            },
+            LootRespawnDays: {
+                type: 'int',
+                value: 30,
+            },
+            MaxSpawnedZombies: {
+                type: 'int',
+                value: 64,
+            },
+            LandClaimCount: {
+                type: 'int',
+                value: 1,
+            },
+            LandClaimSize: {
+                type: 'int',
+                value: 41,
+            },
+            LandClaimDeadZone: {
+                type: 'int',
+                value: 30,
+            },
+            LandClaimExpiryTime: {
+                type: 'int',
+                value: 7,
+            },
+            LandClaimDecayMode: {
+                type: 'int',
+                value: 0,
+            },
+            LandClaimOnlineDurabilityModifier: {
+                type: 'int',
+                value: 4,
+            },
+            LandClaimOfflineDurabilityModifier: {
+                type: 'int',
+                value: 4,
+            },
+            LandClaimOfflineDelay: {
+                type: 'int',
+                value: 0,
+            },
+            PartySharedKillRange: {
+                type: 'int',
+                value: 100,
+            },
+            MaxSpawnedAnimals: {
+                type: 'int',
+                value: 50,
+            },
+            ServerVisibility: {
+                type: 'int',
+                value: 2,
+            },
+            BedrollExpiryTime: {
+                type: 'int',
+                value: 45,
+            },
+            IsDedicated: {
+                type: 'bool',
+                value: true,
+            },
+            IsPasswordProtected: {
+                type: 'bool',
+                value: false,
+            },
+            ShowFriendPlayerOnMap: {
+                type: 'bool',
+                value: true,
+            },
+            BuildCreate: {
+                type: 'bool',
+                value: false,
+            },
+            EACEnabled: {
+                type: 'bool',
+                value: true,
+            },
+            Architecture64: {
+                type: 'bool',
+                value: true,
+            },
+            StockSettings: {
+                type: 'bool',
+                value: true,
+            },
+            StockFiles: {
+                type: 'bool',
+                value: true,
+            },
+            RequiresMod: {
+                type: 'bool',
+                value: false,
+            },
+            AirDropMarker: {
+                type: 'bool',
+                value: false,
+            },
+            EnemySpawnMode: {
+                type: 'bool',
+                value: true,
+            },
+            IsPublic: {
+                type: 'bool',
+                value: true,
+            },
+        },
+    },
+}
