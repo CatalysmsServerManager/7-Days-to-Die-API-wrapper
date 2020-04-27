@@ -1,7 +1,7 @@
 {
     meta: {
         createdAt: '2020-04-27T18:32:04.811Z',
-        host: 'http://78.46.203.193:8082',
+        host: 'http://1.1.1.1:8082',
         resHumanReadable: true,
     },
     req: {
