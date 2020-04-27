@@ -27,7 +27,7 @@ class TestGlobals {
             adminUser: 'fakeadminuser',
             adminToken: 'fakeadmintoken'
         };
-        const host = `http://${process.env.TESTIP}:${process.env.TESTPORT}`;
+        const host = `http://${process.env.TESTIP || '78.46.203.193'}:${process.env.TESTPORT || '8082'}`;
         this.proxy = talkback({
             host: host,
             record: RecordMode.NEW,
