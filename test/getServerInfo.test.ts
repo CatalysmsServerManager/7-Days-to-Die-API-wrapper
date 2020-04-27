@@ -1,21 +1,11 @@
 'use strict';
+import g from './_globals';
 import * as chai from 'chai';
-import * as chaiAsPromised from 'chai-as-promised';
-import { getServerInfo, SdtdServer } from '../lib/index';
+import { getServerInfo } from '../lib/index';
 
-require('dotenv').config();
-
-chai.use(chaiAsPromised);
-
-const testServer: SdtdServer = {
-    ip: process.env.TESTIP as string,
-    port: process.env.TESTPORT as string,
-    adminUser: process.env.TESTADMINUSER as string,
-    adminToken: process.env.TESTADMINTOKEN as string
-};
 describe('/api/getServerInfo', async () => {
     it('Returns expected output', async () => {
-        const response = await getServerInfo(testServer);
+        const response = await getServerInfo(g.getTestServer());
         chai.expect(response.GameType.value).to.be.a('string');
         chai.expect(response.GameName.value).to.be.a('string');
         chai.expect(response.GameHost.value).to.be.a('string');

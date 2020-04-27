@@ -34,6 +34,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^7.0.0",
     "shx": "^0.3.0",
+    "talkback": "^2.1.1",
     "ts-node": "^8.3.0",
     "typedoc": "^0.17.4",
     "typescript": "^3.8.3"
