@@ -2,6 +2,7 @@ tsconfig.json
 .travis.yml
 .nojekyll
 docs/
+coverage/
 .npmignore
 
 7daystodie-api-wrapper-*.tgz
