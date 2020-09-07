@@ -6,3 +6,5 @@ coverage/
 .npmignore
 
 7daystodie-api-wrapper-*.tgz
+dist/test/
+test/
