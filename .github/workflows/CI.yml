@@ -1,0 +1,48 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache Node.js modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+      - run: npm ci
+      - run: npm build
+      - run: npm run lint
+      - run: npm run cover
+        env:
+          TESTPLAYER: "76561198028175941"
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TOKEN }}
+          coverageLocations: |
+            ./coverage/lcov.info:lcov
+          TESTPLAYER: "76561198028175941"
+        with:
+          coverageCommand: npm run cover
+      - uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage/lcov.info
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: ./dist/
