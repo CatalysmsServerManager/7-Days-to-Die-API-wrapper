@@ -30,7 +30,14 @@ jobs:
       - run: npm run cover
         env:
           TESTPLAYER: "76561198028175941"
-      - uses: actions/upload-artifact@v2
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v2.6.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TOKEN }}
+          coverageLocations: |
+            ./coverage/lcov.info:lcov
         with:
-          name: dist
-          path: ./dist/
+          coverageCommand: npm run cover
+      - uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage/lcov.info
