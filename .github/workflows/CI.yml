@@ -36,6 +36,7 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_TOKEN }}
           coverageLocations: |
             ./coverage/lcov.info:lcov
+          TESTPLAYER: "76561198028175941"
         with:
           coverageCommand: npm run cover
       - uses: codecov/codecov-action@v1
