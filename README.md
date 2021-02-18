@@ -44,3 +44,8 @@ async function foo() {
  To run tests, you must have a working 7 Days to die server with allocs fixes installed. You must also have at least one player profile saved on the server (logging in once will do this).
 
  Fill in the server connection info in a .env file (see example file) and then run `npm test`
+
+
+## Other languages
+
+- [Go wrapper by Pharrisee](https://github.com/pharrisee/csmm-golang-api-wrapper)
