@@ -17,7 +17,7 @@ const replaceIP = (obj) => {
         return;
     }
     if (obj.ip) {
-        obj.ip = ipInt(obj.steamid % maxIP).toIP();
+        obj.ip = ipInt(obj.steamid.replace('Steam_', '') % maxIP).toIP();
     }
     for (const subObj of Object.values(obj)) {
         replaceIP(subObj);

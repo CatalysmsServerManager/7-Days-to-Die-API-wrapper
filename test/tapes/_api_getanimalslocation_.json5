@@ -1,39 +1,58 @@
 {
     meta: {
-        createdAt: '2020-04-27T18:32:04.212Z',
+        createdAt: '2021-12-04T12:34:02.913Z',
         host: 'https://7d2d.csmm.app',
         resHumanReadable: true,
     },
     req: {
-        url: '/api/getanimalslocation',
-        method: 'GET',
         headers: {
             accept: '*/*',
             'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
             'accept-encoding': 'gzip,deflate',
             connection: 'close',
         },
+        url: '/api/getanimalslocation',
+        method: 'GET',
         body: '',
     },
     res: {
         status: 200,
         headers: {
+            server: [
+                'nginx',
+            ],
+            date: [
+                'Sat, 04 Dec 2021 12:34:03 GMT',
+            ],
             'content-type': [
                 'application/json; charset=utf-8',
             ],
-            server: [
-                'Mono-HTTPAPI/1.0',
-            ],
-            date: [
-                'Mon, 27 Apr 2020 18:32:04 GMT',
-            ],
             'content-length': [
-                '2',
+                '142',
             ],
             connection: [
                 'close',
             ],
         },
-        body: [],
+        body: [
+            {
+                id: 179,
+                name: 'animalChicken',
+                position: {
+                    x: 1693,
+                    y: 61,
+                    z: 302,
+                },
+            },
+            {
+                id: 189,
+                name: 'animalRabbit',
+                position: {
+                    x: 1611,
+                    y: 80,
+                    z: 351,
+                },
+            },
+        ],
     },
 }

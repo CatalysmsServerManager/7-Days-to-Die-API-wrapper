@@ -1,39 +1,76 @@
 {
     meta: {
-        createdAt: '2020-04-27T18:32:04.512Z',
+        createdAt: '2021-12-04T12:34:03.029Z',
         host: 'https://7d2d.csmm.app',
         resHumanReadable: true,
     },
     req: {
-        url: '/api/gethostilelocation',
-        method: 'GET',
         headers: {
             accept: '*/*',
             'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
             'accept-encoding': 'gzip,deflate',
             connection: 'close',
         },
+        url: '/api/gethostilelocation',
+        method: 'GET',
         body: '',
     },
     res: {
         status: 200,
         headers: {
+            server: [
+                'nginx',
+            ],
+            date: [
+                'Sat, 04 Dec 2021 12:34:03 GMT',
+            ],
             'content-type': [
                 'application/json; charset=utf-8',
             ],
-            server: [
-                'Mono-HTTPAPI/1.0',
-            ],
-            date: [
-                'Mon, 27 Apr 2020 18:32:04 GMT',
-            ],
             'content-length': [
-                '2',
+                '286',
             ],
             connection: [
                 'close',
             ],
         },
-        body: [],
+        body: [
+            {
+                id: 184,
+                name: 'zombieBurnt',
+                position: {
+                    x: 1643,
+                    y: 61,
+                    z: 282,
+                },
+            },
+            {
+                id: 187,
+                name: 'zombieNurse',
+                position: {
+                    x: 1674,
+                    y: 61,
+                    z: 299,
+                },
+            },
+            {
+                id: 188,
+                name: 'zombieDarlene',
+                position: {
+                    x: 1677,
+                    y: 58,
+                    z: 337,
+                },
+            },
+            {
+                id: 191,
+                name: 'zombieSkateboarder',
+                position: {
+                    x: 1706,
+                    y: 63,
+                    z: 291,
+                },
+            },
+        ],
     },
 }

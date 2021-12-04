@@ -1,7 +1,8 @@
 'use strict';
-import g from './_globals';
 import * as chai from 'chai';
-import { getOnlinePlayers } from '../lib/index';
+
+import { getOnlinePlayers } from '../lib';
+import g from './_globals';
 
 describe('/api/getOnlinePlayers', async () => {
     it('Returns an array of player info', async () => {
@@ -39,7 +40,6 @@ describe('/api/getOnlinePlayers', async () => {
         if (response.length > 0) {
             const playerStats = response[0];
 
-            chai.expect(playerStats.experience).to.be.a('number');
             chai.expect(playerStats.level).to.be.a('number');
             chai.expect(playerStats.health).to.be.a('number');
             chai.expect(playerStats.stamina).to.be.a('number');

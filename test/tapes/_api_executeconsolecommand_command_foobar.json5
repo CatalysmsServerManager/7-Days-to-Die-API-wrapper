@@ -1,31 +1,31 @@
 {
     meta: {
-        createdAt: '2020-04-27T00:03:01.915Z',
+        createdAt: '2021-12-04T12:34:02.598Z',
         host: 'https://7d2d.csmm.app',
         resHumanReadable: true,
     },
     req: {
-        url: '/api/executeconsolecommand?command=foobar',
-        method: 'GET',
         headers: {
             accept: '*/*',
             'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
             'accept-encoding': 'gzip,deflate',
             connection: 'close',
         },
+        url: '/api/executeconsolecommand?command=foobar',
+        method: 'GET',
         body: '',
     },
     res: {
         status: 404,
         headers: {
-            'content-type': [
-                'text/html; charset=utf-8',
-            ],
             server: [
-                'Mono-HTTPAPI/1.0',
+                'nginx',
             ],
             date: [
-                'Mon, 27 Apr 2020 00:03:02 GMT',
+                'Sat, 04 Dec 2021 12:34:02 GMT',
+            ],
+            'content-type': [
+                'text/html; charset=utf-8',
             ],
             'content-length': [
                 '15',

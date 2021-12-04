@@ -1,7 +1,8 @@
 'use strict';
-import g from './_globals';
 import * as chai from 'chai';
-import { getServerInfo } from '../lib/index';
+
+import { getServerInfo } from '../lib';
+import g from './_globals';
 
 describe('/api/getServerInfo', async () => {
     it('Returns expected output', async () => {
@@ -15,7 +16,6 @@ describe('/api/getServerInfo', async () => {
         chai.expect(response.GameMode.value).to.be.a('string');
         chai.expect(response.Version.value).to.be.a('string');
         chai.expect(response.IP.value).to.be.a('string');
-        chai.expect(response.CountryCode.value).to.be.a('string');
         chai.expect(response.SteamID.value).to.be.a('string');
         chai.expect(response.CompatibilityVersion.value).to.be.a('string');
         chai.expect(response.Platform.value).to.be.a('string');
