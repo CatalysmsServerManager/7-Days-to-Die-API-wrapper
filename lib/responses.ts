@@ -24,7 +24,6 @@ export interface OnlinePlayerResponse {
     name: string,
     online: boolean,
     position: Position,
-    experience: number,
     level: number,
     health: number,
     stamina: number,
