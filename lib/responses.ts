@@ -19,6 +19,7 @@ export interface Position {
 
 export interface OnlinePlayerResponse {
     steamid: string,
+    userid: string,
     entityid: number,
     ip: string,
     name: string,
@@ -72,6 +73,8 @@ export interface CommandEntry {
 
 export interface InventoryResponse {
     playername: string,
+    userid: string,
+    steamid: string,
     bag: Array<any>, // eslint-disable-line
     belt: Array<any>, // eslint-disable-line
     equipment: PlayerEquipment
@@ -115,6 +118,7 @@ export interface PlayerNotOnline {
 
 export interface PlayerLocation {
     steamid: string,
+    userid: string,
     name: string,
     online: boolean,
     position: Position

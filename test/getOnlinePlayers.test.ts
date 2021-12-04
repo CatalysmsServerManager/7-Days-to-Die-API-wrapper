@@ -17,6 +17,8 @@ describe('/api/getOnlinePlayers', async () => {
             const playerStats = response[0];
 
             chai.expect(playerStats.steamid).to.be.a('string').and.to.be.not.empty;
+            chai.expect(playerStats.steamid).to.not.contain('Steam_');
+            chai.expect(playerStats.userid).to.be.a('string').and.to.be.not.empty;
             chai.expect(playerStats.name).to.be.a('string').and.to.be.not.empty;
             chai.expect(playerStats.entityid).to.be.a('number').and.to.be.not.equal(0);
         }

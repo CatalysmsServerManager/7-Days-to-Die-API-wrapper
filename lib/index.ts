@@ -2,6 +2,7 @@ import fetch, { RequestInit } from 'node-fetch';
 import { stringify } from 'qs';
 import { ParsedUrlQueryInput } from 'querystring';
 
+import { handleSteamId } from './handleSteamId';
 import * as responses from './responses';
 
 export interface SdtdServer {
@@ -43,7 +44,7 @@ async function fetchJson(server: SdtdServer, url: string, qs: ParsedUrlQueryInpu
     }).then(response => {
         const contentType = response.headers.get("content-type");
         if (contentType && contentType.indexOf("application/json") !== -1) {
-            return response.json();
+            return response.json().then(handleSteamId);
         } else {
             return response.text();
         }
@@ -82,7 +83,7 @@ export async function getPlayerInventory(server: SdtdServer, steamId: string, fe
     return fetchJson(server, `/api/getplayerinventory`, { adminuser: server.adminUser,admintoken: server.adminToken, steamid: steamId, userid: `Steam_${steamId}` }, fetchOpts);
 }
 
-export async function getPlayerInventories(server: SdtdServer, fetchOpts?: RequestInit): Promise<responses.GetLog> {
+export async function getPlayerInventories(server: SdtdServer, fetchOpts?: RequestInit): Promise<Array<responses.InventoryResponse>> {
     return fetchJson(server, `/api/getplayerinventories`, { adminuser: server.adminUser,admintoken: server.adminToken }, fetchOpts);
 }
 
