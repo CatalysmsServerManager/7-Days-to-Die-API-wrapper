@@ -1,6 +1,7 @@
-import { ParsedUrlQueryInput } from "querystring";
-import { stringify } from "qs";
-import fetch, { RequestInit } from "node-fetch";
+import fetch, { RequestInit } from 'node-fetch';
+import { stringify } from 'qs';
+import { ParsedUrlQueryInput } from 'querystring';
+
 import * as responses from './responses';
 
 export interface SdtdServer {
@@ -78,7 +79,7 @@ export async function getLandClaims(server: SdtdServer, steamId?: string, fetchO
 }
 
 export async function getPlayerInventory(server: SdtdServer, steamId: string, fetchOpts?: RequestInit): Promise<responses.InventoryResponse> {
-    return fetchJson(server, `/api/getplayerinventory`, { adminuser: server.adminUser,admintoken: server.adminToken, steamid: steamId }, fetchOpts);
+    return fetchJson(server, `/api/getplayerinventory`, { adminuser: server.adminUser,admintoken: server.adminToken, steamid: steamId, userid: `Steam_${steamId}` }, fetchOpts);
 }
 
 export async function getPlayerInventories(server: SdtdServer, fetchOpts?: RequestInit): Promise<responses.GetLog> {

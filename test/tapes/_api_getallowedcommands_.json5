@@ -1,34 +1,34 @@
 {
     meta: {
-        createdAt: '2020-04-27T18:32:03.600Z',
+        createdAt: '2021-12-04T12:34:02.735Z',
         host: 'https://7d2d.csmm.app',
         resHumanReadable: true,
     },
     req: {
-        url: '/api/getallowedcommands',
-        method: 'GET',
         headers: {
             accept: '*/*',
             'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
             'accept-encoding': 'gzip,deflate',
             connection: 'close',
         },
+        url: '/api/getallowedcommands',
+        method: 'GET',
         body: '',
     },
     res: {
         status: 200,
         headers: {
+            server: [
+                'nginx',
+            ],
+            date: [
+                'Sat, 04 Dec 2021 12:34:02 GMT',
+            ],
             'content-type': [
                 'application/json; charset=utf-8',
             ],
-            server: [
-                'Mono-HTTPAPI/1.0',
-            ],
-            date: [
-                'Mon, 27 Apr 2020 18:32:03 GMT',
-            ],
             'content-length': [
-                '54897',
+                '33640',
             ],
             connection: [
                 'close',
@@ -39,7 +39,17 @@
                 {
                     command: 'admin',
                     description: 'Manage user permission levels',
-                    help: 'Set/get user permission levels. A level of 0 is maximum permission,\nusers without an explicitly set permission have a permission level of 1000.\nUsage:\n   admin add <name / entity id / steam id> <level>\n   admin remove <name / entity id / steam id>\n   admin list\nTo use the add/remove sub commands with a name or entity id the player has\nto be online, the variant with steam id can be used for currently offline\nusers too.',
+                    help: "Set/get user permission levels. A level of 0 is maximum permission,\nusers without an explicitly set permission have a permission level of 1000.\nUsage:\n   admin add <name / entity id / platform + platform user id> <level> [displayname]\n   admin remove <name / entity / platform + platform user id>\n   admin addgroup <steam id> <level regular> <level mods> [displayname]\n   admin removegroup <steam id>\n   admin list\nTo use the add/remove sub commands with a name or entity ID the player has\nto be online, the variant with platform and platform ID can be used for currently offline\nusers too.\nDisplayname can be used to put a descriptive name to the ban list in addition\nto the user's platform ID. If used on an online user the player name is used by default.\nWhen adding groups you set two permission levels: The 'regular' level applies to\nnormal members of the group, the 'mods' level applies to moderators / officers of\nthe group.",
+                },
+                {
+                    command: 'AdminSpeed',
+                    description: 'AdminSpeed',
+                    help: '',
+                },
+                {
+                    command: 'ai',
+                    description: 'AI commands',
+                    help: 'AI commands:\nlatency - toggles drawing\npathlines - toggles drawing editor path lines\npathgrid - force grid update\nragdoll <force> <time>\nrage <speed> <time> - make all zombies rage (0 - 2, 0 stops) (seconds)\nsendnames - toggles admin clients receiving debug name info',
                 },
                 {
                     command: 'aiddebug',
@@ -59,17 +69,12 @@
                 {
                     command: 'ban',
                     description: 'Manage ban entries',
-                    help: 'Set/get ban entries. Bans will be automatically lifted after the given time.\nUsage:\n   ban add <name / entity id / steam id> <duration> <duration unit> [reason]\n   ban remove <name / entity id / steam id>\n   ban list\nTo use the add/remove sub commands with a name or entity id the player has\nto be online, the variant with steam id can be used for currently offline\nusers too.\nDuration unit is a modifier to the duration which specifies if in what unit\nthe duration is given. Valid units:\n    minute(s), hour(s), day(s), week(s), month(s), year(s)\nExample: ban add madmole 2 minutes "Time for a break"',
+                    help: 'Set/get ban entries. Bans will be automatically lifted after the given time.\nUsage:\n   ban add <name / entity id / platform + platform user id> <duration> <duration unit> [reason] [displayname]\n   ban remove <name / entity id / platform + platform user id>\n   ban list\nTo use the add/remove sub commands with a name or entity ID the player has\nto be online, the variant with platform and platform ID can be used for currently offline\nusers too.\nDuration unit is a modifier to the duration which specifies if in what unit\nthe duration is given. Valid units:\n    minute(s), hour(s), day(s), week(s), month(s), year(s)\nDisplayname can be used to put a descriptive name to the ban list in addition\nto the user\'s platform ID. If used on an online user the player name is used by default.\nExample: ban add madmole 2 minutes "Time for a break" "Joel"',
                 },
                 {
                     command: 'bents',
                     description: 'Switches block entities on/off',
                     help: 'Use on or off or only the command to toggle',
-                },
-                {
-                    command: 'BiomeParticles',
-                    description: 'Debug',
-                    help: '',
                 },
                 {
                     command: 'buff',
@@ -80,6 +85,11 @@
                     command: 'buffplayer',
                     description: 'Apply a buff to a player',
                     help: 'Usage:\n   buffplayer <player name / steam id / entity id> <buff name>\nApply the given buff to the player given by the player name or entity id (as given by e.g. "lpi").',
+                },
+                {
+                    command: 'camera',
+                    description: 'Lock/unlock camera movement or load/save a specific camera position',
+                    help: "Usage:\n   1. cam save <name> [comment]\n   2. cam load <name>\n   3. cam list\n   4. cam lock\n   5. cam unlock\n1. Save the current player's position and camera view or the camera position\nand view if in detached mode under the given name. Optionally a more descriptive\ncomment can be supplied.\n2. Load the position and direction with the given name. If in detached camera\nmode the camera itself will be adjusted, otherwise the player will be teleported.\n3. List the saved camera positions.\n4/5. Lock/unlock the camera rotation. Can also be achieved with the \"Lock Camera\" key,\ncurrently bound to ''.",
                 },
                 {
                     command: 'chunkcache',
@@ -94,442 +104,17 @@
                 {
                     command: 'chunkreset',
                     description: 'resets the specified chunks',
+                    help: 'Usage:\n  1. chunkreset <x1> <z1> <x2> <z2>\n  2. chunkreset [f]\n1. Rebuilds the chunks that contain the given coordinate range.\n2. Can only be executed by a player in the ingame console! Behaviour depends on whether the\n   player is currently within the bounds of a POI:\n   Within a POI: The POI is reset.\n   Not within a POI: The chunk the player is in and the eight chunks around that one are\n     rebuilt. Not deco! Does not reload POI data!\n   d - regen deco\n   f - fully regenerates chunks (may cause double entities!)',
+                },
+                {
+                    command: 'clearJunkDroneData',
+                    description: 'clears the player junkDrone data.',
                     help: '',
                 },
                 {
                     command: 'commandpermission',
                     description: 'Manage command permission levels',
                     help: 'Set/get permission levels required to execute a given command. Default\nlevel required for commands that are not explicitly specified is 0.\nUsage:\n   cp add <command> <level>\n   cp remove <command>\n   cp list',
-                },
-                {
-                    command: 'cpm-additemloot',
-                    description: 'add item to SecureLoot below the given entity',
-                    help: 'add item to SecureLoot below the given entity\nUsage:\n   1. additemloot <name / entity id> <loot_slot_number> <item name> <stackSize> <quality> <used>\n   2. additemloot <name / entity id> <item name> <stackSize> <quality> <usedTimes>\n1. add an item at SecureLoot at slot_number\n2. add an item at SecureLoot at first slot available\n*if the item does not have quality, set the quality number as 1\n*if the item does not have used, set the number as 0. This number is a % of used. 0% means new full item. 100 means totally broken',
-                },
-                {
-                    command: 'cpm-announcenighttime',
-                    description: 'Turn NightTime announcement on/off',
-                    help: 'Usage:\n  1. an true/false\n  2. an warnhours <hours>\n  3. an announcer <name>\n  4. an nighttimetext <string>\n  5. an blooddaytext <string>\n  6. an blooddaytomorrowtext <string>\n  7. an counterdaytext <string>\n  8. an\n1. Turn AnnounceNightTime ON (true)/OFF(false)\n2. Set the number of <hours> before 22:00 warning\n3. Set the name of the announcer\n4. Set the text for nighttime warning. {hours} will be replaced by the warnhours setting\n5. Set the text for announcing bloodmoon is tonight\n6. Set the text for announcing bloodmoon is tomorrow\n7. Set the text for normal bloodmoon counter text. {daysleft} will be replaced by remaining days\n8. List active AnnounceNightTime settings\nAll text and announcer name support (nested) color coding. The value of <string> has to be wrapped in "double quotes".\nPut text between [colorCode]text here[-] for giving it a color.',
-                },
-                {
-                    command: 'cpm-arrest',
-                    description: 'Put a player in jail (reversed claim jail required!)',
-                    help: 'Put a player in jail (reversed claim jail required!)\nUsage:\n   arrest <Name/EntityId/SteamId>\n   arrest <Name/EntityId/SteamId> <jailTime(Minutes)>',
-                },
-                {
-                    command: 'cpm-bcheck',
-                    description: 'Checks the type of block by coordinates or under your feet.',
-                    help: 'Usage:\n  1. bcheck <x> <y> <z>\n  2. bcheck\n1. check the block at x, y, z.\n2. check the block under your feet.',
-                },
-                {
-                    command: 'cpm-bdup',
-                    description: 'Copy an Area to another location',
-                    help: 'Usage:\n  1. bdup <x1> <x2> <y1> <y2> <z1> <z2> <x> <y> <z> <rot>\n  2. bdup p1\n  3. bdup p2\n  4. bdup <x> <y> <z> <rot>\n  5. bdup <rot>\n1. duplicate the defined area on x,y,z\n2. Store on position 1 your current location\n3. Store on position 2 your current location\n4. use stored position 1 and 2 to duplicate on x,y,z\n5. use stored position 1 and 2 to duplicate on your current location\n<rot> prefab rotation -> need to be equal 0,1,2 or 3\n',
-                },
-                {
-                    command: 'cpm-bexport',
-                    description: 'Exports as Prefab some space',
-                    help: 'Usage:\n  1. bexport <x1> <x2> <y1> <y2> <z1> <z2> <prefab_file_name>\n  2. bexport \n  3. bexport <prefab_file_name>\n\n1. Export the defined area to a prefabFile on folder .../Data/Prefabs/  \n2. Store the player position to be used togheter on method 3.  \n3. Use stored position on method 2. with current position to export the area to prefab File on folder .../Data/Prefabs/ \n',
-                },
-                {
-                    command: 'cpm-brender',
-                    description: 'Renders a Prefab on given location',
-                    help: 'Usage:\n  1. brender <prefab_file_name> <x> <y> <z> <rot> [nosleepers]\n  2. brender <prefab_file_name> <rot> [nosleepers]\n  3. brender <prefab_file_name> <rot> <depth> [nosleepers]\n<rot> prefab rotation -> need to be equal 0,1,2 or 3\n1. Render prefab on <x> <y> <z> location\n2. Render prefab on your position\n3. Render prefab on your position with y deslocated <depth blocks>\n',
-                },
-                {
-                    command: 'cpm-brepblock',
-                    description: 'Replace blocks from a defined location',
-                    help: 'Usage:\n  1. brepblock <block_to_be_replaced> <block_name> <x1> <x2> <y1> <y2> <z1> <z2>\n  2. brepblock <block_to_be_replaced> <block_name> <x>@<qnt> <y>@<qnt> <z>@<qnt>\n  3. brepblock <block_to_be_replaced> <block_name> <qnt> <qnt> <qnt>\n  4. brepblock <block_name>\n  5. brepblock p1\n  6. brepblock p2 <block_to_be_replaced_name or id> <block_name>\n1. replace blocks block_to_be_replaced with block_name from x1,y1,z1 to x2,y2,z2\n2. replace blocks block_to_be_replaced with block_name from x,y,z each quantity. Quantity can be posivite or negative.\n3. replace blocks block_to_be_replaced with block_name from your position each quantity. Quantity can be posivite or negative.\n4. Search for block names. Fill with * to list all.\n5. Store your position to be used on method 6.\n6. replace blocks block_to_be_replaced with block_name from position stored on method 5 until your current location.\n',
-                },
-                {
-                    command: 'blockutf8names',
-                    description: 'Kick any players with UTF-8 chars in name at login',
-                    help: 'Usage:\n bun <true/false>\n bun',
-                },
-                {
-                    command: 'cpm-bundo',
-                    description: 'Undo last prefab command',
-                    help: 'Usage:\n  1. bundo\n1. Undo prefabs command. It works with brender, fblock and bdup\nBy default the size of undo history ise set to 1. You can change the undo history size using "setbundosize"\n',
-                },
-                {
-                    command: 'cpm-ccc',
-                    description: 'Manage advanced claims',
-                    help: 'Add/Remove/List/Configure advanced claims\nUsage:\n  1. ccc add <claimid/steamid> <w_boundary> <e_boundary> <n_boundary> <s_boundary> <accessLevel> [<type>]\n  2. ccc remove <claimid/steamid>\n  3. ccc list\n  4. ccc wl add <claimid/steamid> <steamid>\n  5. ccc wl remove <claimid/steamid> <steamid>\n  6. ccc p1\n  7. ccc p2 <claimid/steamid> <accessLevel> [<type>]\n  8. ccc radius <radius> <steamId/entityId/Name> <claimid/steamid> <accessLevel> [<type>]\n1. Add a claim. Use steamid of player in the name when using as playerclaim.\n   For normal claims leave type empty. Possible types: reversed, leveled, timed, hostilefree, portal, openhours\n2. Delete claim with name <claimid/steamid>\n3. List all advanced claims\n4. Add a steamid to the whitelist of claim <claimid/steamid>\n5. Remove a steamid from the whitelist of claim <claimid/steamid>\n6. Store your position for use with 7.\n7. Add a claim with coordinates set by 6 and current position.\n8. Add a claim with boundaries on <radius> distance from <steamId/entityId/Name> position.',
-                },
-                {
-                    command: 'chatcommandpermissions',
-                    description: 'Set permission levels on admin chatcommands',
-                    help: 'Usage:\n    ccp <command> <pemissionlevel>\n    ccp list\n<command> can be ft, ftw, mv, mvw, tb, rt, get, listwp, setwp, delwp, ls, bag, rtc, day7, hostiles, bed and bubble',
-                },
-                {
-                    command: 'cpm-chatgroupcolor',
-                    description: 'Manage chat color by groupmembership.',
-                    help: 'Manage chat color by groupmembership.\nUsage:\n   cgc listgroups\n   cgc addgroup <groupName> <groupColor>\n   cgc deletegroup <groupName>\n   cgc listmembers <groupName>\n   cgc adduser <steam id/player name/entity id> <groupName>\n   cgc cleargroup <steam id/player name/entity id>\nThe <groupColor> must be 6 hex characters. Example: FF00FF\n',
-                },
-                {
-                    command: 'cpm-checkloot',
-                    description: 'check items from SecureLoot below the given entity',
-                    help: 'check items from SecureLoot below the given entity\nUsage:\n   1. checkloot <name / entity id> [<tag>]\n1. check items at SecureLoot under a player\n',
-                },
-                {
-                    command: 'cpm-cpmprefix',
-                    description: 'Set prefix for CPM chatcommands.',
-                    help: 'Usage:\n cpmprefix <prefix>\n cpmprefix',
-                },
-                {
-                    command: 'cpm-cs',
-                    description: 'Spawn scouts near a player or coordinate',
-                    help: 'Call scouts near a player.Usage:\n   cs <steam id/player name/entity id>\nor   cs <x> <y> <z>\n',
-                },
-                {
-                    command: 'checkvehiclecontent',
-                    description: 'check the content of a vehicle.',
-                    help: 'cvc <vehicleID>',
-                },
-                {
-                    command: 'deactivatebed',
-                    description: 'Deactivate a players bed(roll).',
-                    help: 'Usage:  1. db <steamid>\nDeactivate the active bed (roll) of a player by SteamID',
-                },
-                {
-                    command: 'donorslot',
-                    description: 'Add, Remove and View steamids on the ReservedSlots list.',
-                    help: 'Usage:\n  1. ds add <steamID> <playerName> <days to expire>\n  2. ds remove <steamID>\n  3. ds list\n  4. ds donorbuffer <number of players>\n  5. ds enabled <true/false>\n1. Adds a steamID to the DonorSlots list\n2. Removes a steamID from the DonorSlots list\n3. Lists all steamIDs that have a DonorSlot\n4. Set the number of donor slots for donors\n5. Enable/Disable donor slots for donors',
-                },
-                {
-                    command: 'cpm-entityremove',
-                    description: 'remove entity from game',
-                    help: 'Removes an entity from the game.\nUsage:\n   1. entityremove entityID\n1. Remove an entity from game\n',
-                },
-                {
-                    command: 'executeonclient',
-                    description: 'Let a local player fire a local only console coommand (or any)',
-                    help: 'Let a local player fire a local only console coommand (or any)\nUsage:\n   eoc <Name/EntityId/SteamId> "command param1 param2"\nuse single quotes for parameters that contain spaces in remote command.',
-                },
-                {
-                    command: 'cpm-etele',
-                    description: 'Teleport an entity',
-                    help: 'Teleport an entity.\nUsage:\n   1. etele entityID <x> <y> <z> [rot]\n   2. etele entityID <player_id> [rot]\n1. Teleport an entity to a location\n2. Teleport an entity to player location\n',
-                },
-                {
-                    command: 'cpm-fblock',
-                    description: 'Fill a defined area with a specific block',
-                    help: 'Usage:\n  1. fblock <block_name> <x1> <x2> <y1> <y2> <z1> <z2>\n  2. fblock <block_name> <x>@<qnt> <y>@<qnt> <z>@<qnt>\n  3. fblock <block_name> <qnt> <qnt> <qnt>\n  4. fblock <block_name>\n  5. fblock p1      or    pblock L1\n  6. fblock p2 <block_name>\n1. fill blocks with block_name from x1,y1,z1 to x2,y2,z2\n2. fill blocks with block_name from x,y,z each quantity. Quantity can be posivite or negative.\n3. fill blocks with block_name from your position each quantity. Quantity can be posivite or negative.\n4. Search for block names. Fill with * to list all.\n5. Store your position to be used on method 6. p1 store your position,  L1 store the position where you are looking at\n6. Place blocks with block_name from position stored on method 5 until your current location.\n',
-                },
-                {
-                    command: 'cpm-fblock1',
-                    description: 'place one block at a time without the need of chunkreloading (RPC)',
-                    help: 'Usage:  1. fblock1 <blockname> <x> <y> <z>\n1. Place one block on position x,y,z',
-                },
-                {
-                    command: 'cpm-gc',
-                    description: 'Invoke the garbagecollector. Free some memory.',
-                    help: 'Usage:\n gc',
-                },
-                {
-                    command: 'cpm-getbicycle',
-                    description: 'Get lost or stuck bicycle to player',
-                    help: 'Get bicycle Usage:\n   getbicycle <steam id/player name/entity id>\n',
-                },
-                {
-                    command: 'cpm-getbike',
-                    description: 'Get lost or stuck minibike to player',
-                    help: 'Get minibike Usage:\n   getbike <steam id/player name/entity id>\n',
-                },
-                {
-                    command: 'cpm-getgyrocopter',
-                    description: 'Get lost or stuck gyrocopter to player',
-                    help: 'Get gyrocopter Usage:\n   getgyrocopter <steam id/player name/entity id>\n',
-                },
-                {
-                    command: 'cpm-getjeep',
-                    description: 'Get lost or stuck jeep to player',
-                    help: 'Get jeep Usage:\n   getjeep <steam id/player name/entity id>\n',
-                },
-                {
-                    command: 'cpm-getmotorcycle',
-                    description: 'Get lost or stuck motorcycle to player',
-                    help: 'Get motorcycle Usage:\n   getmotorcycle <steam id/player name/entity id>\n',
-                },
-                {
-                    command: 'cpm-getprefab',
-                    description: 'Get info/manage the RWG prefab you are standing in.',
-                    help: 'Usage:\n  1. getprefab reset\n  2. getprefab exclude\n  3. getprefab exclude type\n  4. getprefab\n1. Reset the RWG prefab you are standing in.\n2. Exclude the RWG prefab you are standing in from resets by unique name\n3. Exclude the RWG prefab you are standing in from resets by type\n4. Get info on the RWG prefab you are standing in.',
-                },
-                {
-                    command: 'cpm-giveplus',
-                    description: 'give an item to a player(s) (entity id or name)',
-                    help: 'Give item(s) to a (all) player(s) by putting in backpack of player(s)\nUsage:\n   giveplus <name/entityId/steamId> <item name> <amount> [<quality> <usedTimes>]\n   giveplus all <item name> <amount> [<quality> <usedTimes>]\nEither pass the full name of a player or his entity id (given by e.g. "lpi").\nItem name has to be the exact name of an item as listed by "listitems".\nQuality is the quality of the dropped items for items that have a quality.\nusedTimes is the % that the item was used.',
-                },
-                {
-                    command: 'cpm-givexp',
-                    description: 'give XP to a player',
-                    help: 'Give XP to a player\nUsage:\n   givexp <name / entity id> <amount xp>',
-                },
-                {
-                    command: 'cpm-got',
-                    description: 'give items to or trade items with other player',
-                    help: 'give items to or trade items using a tradingchest\nUsage:\n   1. got list\n   2. got lvi <name / entity id>\n   3. got lti <name / entity id>\n1. list stored tradingchests\n2. list items in virtual tradingchest of player\n3. list items in real tradingchest of player',
-                },
-                {
-                    command: 'cpm-grablcb',
-                    description: 'Put all landclaims within <radius> of and owned by player in his/her backpack.',
-                    help: 'Usage:  1. grablcb <steamid / entityid / name> <radius>\n1. Put all landclaims within <radius> of and owned by player in his/her backpack.',
-                },
-                {
-                    command: 'cpm-help',
-                    description: 'Help on console and specific CSMM Patrons Mod commands',
-                    help: 'Type "cpm-help" for an overview of CSMM Patrons Mod commands ',
-                },
-                {
-                    command: 'cpm-hidechatcommand',
-                    description: 'specify a chat message prefix that defines chat commands that are hidden from chat',
-                    help: 'If used chat messages starting with the defined prefix (e.g. "/") will not be shown to other players.Usage:\n   hccp \n    - If used without any parameter this functionality is disabled   hccp <string pattern> \n    - do not use string pattern with spaces and dont use comma for prefix.\n    - define the prefix for chat commands\n    - define multiple prefixes for chat commands by comma seperated list\n   hccp list\n    - show configured prefixes\n   Example: hccp / or hccp #,$\n    - Chat messages like "/help" or "$help" will be hidden\n',
-                },
-                {
-                    command: 'listcustomentity',
-                    description: 'List entity with custom parameter for better filtering.',
-                    help: 'List entity with custom parameter for better filtering:\n  1. lce <x> <z> <radius> <type>\n  2. lce <xMin> <xMax> <zMin> <zMax> <type>\n  3. lce <type>\nValid types: Zombie, SupplyCrate, Backpack, Item, Animal, Minibike, NPC, Player, Jeep, Bicycle, Motorcycle, Gyrocopter\nUse type as * to not filter the list by type',
-                },
-                {
-                    command: 'cpm-listbedplayer',
-                    description: 'list bed locations of all players or a specific player',
-                    help: 'Usage:\n  1. lpb <steam id / player name / entity id>\nor\n   2. lpb  *this will list all players online and their bed',
-                },
-                {
-                    command: 'cpm-listbuffs',
-                    description: 'List or search all available buffs',
-                    help: 'List or search all available buffs\nUsage:\n1.   lbuffs <searchstring>\n2.   lbuffs',
-                },
-                {
-                    command: 'cpm-listfriendsplayer',
-                    description: 'list friends of a single player or all players',
-                    help: 'Usage:\n  1. lfp <steam id / player name / entity id>  2. lfp (to list all players friends)',
-                },
-                {
-                    command: 'cpm-listlandclaims',
-                    description: 'lists all land protection blocks and owners',
-                    help: 'Usage:\n  1. llc summary\n  2. llc <steam id / player name / entity id> [parseable]\n  3. llc nearby [length]\n1. Lists only players that own claimstones, the number they own and the protection status\n2. Lists only the claims of the player given by his SteamID / entity id / playername, including the individual claim positions.\n   If "parseable" is specified the output of the individual claims will be in a format better suited for programmatical readout.\n3. Lists claims in a square with edge length of 64 (or the optionally specified size) around the executing player\n',
-                },
-                {
-                    command: 'cpm-listplayerbuffs',
-                    description: 'List players active buffs',
-                    help: 'List players active buffs\nUsage:\n1.   lpbuffs <name / entity id> \n2.   lpbuffs ',
-                },
-                {
-                    command: 'cpm-listplayerskill',
-                    description: 'list players Skills',
-                    help: 'list players Skills\nUsage:\n1.   lps <name / entity id> \n2.   lps ',
-                },
-                {
-                    command: 'cpm-loctrack',
-                    description: 'Manage locationtracker settings and data',
-                    help: 'Manage locationtracker settings and data\nUsage:\n  1. loctrack search <steam id/player name/entity id> <radius> <numberOfHours>\n  2. loctrack search <x> <y> <z> <radius> <numberOfHours>\n  3. loctrack showtrack <steam id> <maxrecords> <timespan> <timeBetweenRecords>\n  4. loctrack enabled <true/false>\n  5. loctrack command <newChatCommand>\n  6. loctrack commandenabled <true/false>\n  7. loctrack interval <seconds>\n  8. loctrack maxagedata <hours>\n  9. loctrack neardistance <meters>\n 10. loctrack responsecolor <hexstring>\n 11. loctrack\n1. list players within <radius> of <steam id/player name/entity id> last <numberOfHours>\n2. list players within <radius> of <x> <y> <z> last <numberOfHours> (use y=-1 to ommit y search)\n3. show location tracks of <steam id>. Maximum records <maxrecords>.\n   Minimum time between records <timeBetweenRecords> (seconds). Within <timespan> (MMddHHmm-MMddHHmm).\n4. Enable / Disable location recording\n5. Define the ingame chatcommand (include the prefix)\n6. Enable/Disable ingame chatcommand for querying databases\n7. Set the interval of recording locations (seconds)\n8. Set the maximum time the data stays in databases (hours)(0=forever)\n9. Set the distance for use with chatcommand for reporting near live players\n10. Set the responsecolor for use with chatcommand. Has to be 6 long hexadecimal number\n11. Show all active location tracking settings',
-                },
-                {
-                    command: 'markresetregion',
-                    description: 'Manage the reset regions list.',
-                    help: 'Usage:\n mrr\n mrr add [<regionName>]\n mrr add <w_boundary> <e_boundary> <n_boundary> <s_boundary>\n mrr remove [<regionName>]\n mrr remove <w_boundary> <e_boundary> <n_boundary> <s_boundary>\n mrr list\n mrr notificationtext <enter:exit>\n',
-                },
-                {
-                    command: 'cpm-multipleentityspawn',
-                    description: 'spawn multiple entities around some coordinate or player',
-                    help: 'Spawn multiple entities around some coordinate. Type "mes" to see all entity types\nUsage:\n   mes <x> <y> <z> <spawn radius> @ [<list of entities>]\nor\n   mes <x> <z> <spawn radius> @ [<list of entities>]>\nor\n   mes <steam id/player name/entity id> <spawn radius> @ [<list of entities>]\nExample\n   mes -1520 860 15 @ 1 1 18 18 21 21 21\n',
-                },
-                {
-                    command: 'cpm-mutechatplayer',
-                    description: 'mute a player on public chat',
-                    help: 'Mute a player on public chat.Usage:\n   mcp <steam id/player name/entity id> [true/false]\nIf the optional parameter is not given the command will show the current status.',
-                },
-                {
-                    command: 'cpm-mv',
-                    description: 'Move player command (to coordinates and to other player). Optionally restrict to friends only.',
-                    help: 'Usage:\n mv <playerName/steamId> <playerName/steamId> [fo]\n mv <playerName/steamId> <xxE/W> <xxN/S>',
-                },
-                {
-                    command: 'cpm-mvw',
-                    description: 'Move player to waypoint.',
-                    help: 'Usage:\n mvw <playerName/steamId> <waypointName>\n mvw listwaypoints',
-                },
-                {
-                    command: 'ownvehicle',
-                    description: 'take ownership of a vehicle.',
-                    help: 'ov <vehicleID>',
-                },
-                {
-                    command: 'cpm-overridechatname',
-                    description: "Change a player's chat name.",
-                    help: "Change a player's chat name.\nUsage:\n   ocn <steamId / entityId / playerName> <newName>\n   ocn <steamId / entityId / playerName> clear\n   ocn list\n",
-                },
-                {
-                    command: 'cpm-own',
-                    description: 'define an owner to SecureLoot/SecureDoor for a player.',
-                    help: 'define an owner for SecureLoot/SecureDoor for a player. After using this command you may need to leave and reenter the game to take effect.\n   1. own <x> <y> <z> <entity_id> \n   2. own <x> <y> <z> \n   3. own <entity_id> <entity_id_new_owner>\n   4. own <entity_id>\n   5. own \n1. x,y,z defines the location of SecureLoot/SecureDoor/Signs and the entity_id is the new owner \n2. x,y,z defines the location of SecureLoot/SecureDoor/Signs and you are the new owner \n3. the location of secure SecureLoot/SecureDoor/Signs if bellow entity_id and the entity_id_new_owner is the new owner\n4. the location of secure SecureLoot/SecureDoor/Signs if bellow your player and the entity_id is the new owner\n5. the location of secure SecureLoot/SecureDoor/Signs if bellow your player and you are the new owner',
-                },
-                {
-                    command: 'permadeath',
-                    description: 'Manage permadeath players',
-                    help: 'Usage:\n   pd add <steamId>\n   pd remove <steamId>\n   pd list',
-                },
-                {
-                    command: 'preventfallingblocks',
-                    description: 'Prevent falling blocks on server.',
-                    help: 'Usage:\n  1. pfb <logBlockCount> (0 = disabled, blocks do fall)\n  2. pfb\n1. Enable/Disable prevention of falling blocks. Log when number of blocks falling at once exceed <logBlockCount>.\n2. Show the active <logBlockCount> setting.',
-                },
-                {
-                    command: 'cpm-playerchatcolor',
-                    description: 'Change default player chat color.',
-                    help: 'Change the player`s chat color.Usage:\n   pcc <steam id/player name/entity id> <color> <nameOnly>\nthe <color> must be a 6 hex characters. Example: FF00FF\nthe <nameOnly> must be a 1 to color only name and 0 to color all text\nthe default chat color is FFFFFF\n',
-                },
-                {
-                    command: 'cpm-playsound',
-                    description: 'Play an ingame sound on any server/player position.',
-                    help: 'Play an ingame sound on any server/ player position.\nUsage:\n  1. playsound <steamId/playerName/entityId> <soundName>\n  2. playsound <x> <y> <z> <soundName>\n  3. playsound listloops\n  4. playsound stop <x> <y> <z> <soundName>\n  5. playsound <searchString>\n  6. playsound\n1. Play a sound on the current postion of a player\n2. Play a sound on position x,y,z\n3. List all sounds that are playing in a loop\n4. Stop a sound that is played in loop (check listloops)\n5. Search for a soundname by (partial) string\n6. List all available sounds\n',
-                },
-                {
-                    command: 'cpm-protectplayer',
-                    description: 'Set protective bubble on player.',
-                    help: 'Usage:\n protect <Name/steamId>\n protect list',
-                },
-                {
-                    command: 'cpm-release',
-                    description: 'Release a player from jail.',
-                    help: 'Release a player from jail.\nUsage:\n   release <Name/EntityId/SteamId>',
-                },
-                {
-                    command: 'cpm-remitem',
-                    description: 'remove items from SecureLoot below the given entity',
-                    help: 'Removes items from SecureLoot below the given entity\nUsage:\n   1. remitem <name / entity id>\n1. Remove all itens from SecureLoot\n',
-                },
-                {
-                    command: 'cpm-removelandprotection2',
-                    description: 'removes the association of a land protection block without players needing to be near',
-                    help: 'Usage:  1. rlp2 <steamid>\n  2. rlp2 <x> <y> <z>\n  3. rlp2 nearby [length]\n  4. rlp2 cleanup\n1. Remove all land claims owned by the user with the given SteamID\n2. Remove only the claim block on the exactly given block position\n3. Remove all claims in a square with edge length of 64 (or the optionally specified size) around the executing player4. Remove all expired landclaims from the world',
-                },
-                {
-                    command: 'cpm-resetregionsnow',
-                    description: 'Execute shutdown immediately and reset marked regions.',
-                    help: 'Usage: resetregionsnow',
-                },
-                {
-                    command: 'cpm-resetrwgprefabs',
-                    description: 'Reset all RWG prefabs.',
-                    help: 'Usage:   1. rrp\n   2. rrp stop\n   2. rrp status\n1. Reset all RWG prefabs on the map.\n2. Stop resetting RWG prefabs on the map.\n3. Check if reset prefabs is running and how many prefabs are left for reset.',
-                },
-                {
-                    command: 'cpm-resetunclaimedregionsnow',
-                    description: 'Execute shutdown immediately and reset ALL regions except the ones that have LCB/Adv. Claim on.',
-                    help: 'Usage: resetunclaimedregionsnow',
-                },
-                {
-                    command: 'resetplayerdata',
-                    description: 'Reset a player',
-                    help: 'Usage: resetplayerdata <steamId>',
-                },
-                {
-                    command: 'repairtrees',
-                    description: 'Repair indestructable trees (only with damageindicator)',
-                    help: 'Repair indestructable trees (only with damageindicator)\nUsage:\n   rt  (list bugged trees)\n   rt repair  (repair bugged trees)',
-                },
-                {
-                    command: 'cpm-say2',
-                    description: 'Sends a message to all connected clients with specific sender',
-                    help: 'Usage:\n   say2 <senderName> <message>\n',
-                },
-                {
-                    command: 'cpm-sayadmin',
-                    description: 'Send a PM to all players meeting the minimum receipients permisson level',
-                    help: 'Usage:\n   sayadmin <chatName> <levelReceipients> <message>\nSend a PM to all players meeting the minimum receipients permisson level',
-                },
-                {
-                    command: 'cpm-sayplayer2',
-                    description: 'send a message to a single player with a specific sender name',
-                    help: 'Usage:\n   pm2 <sender playerName> <receiver player name / steam id / entity id> <message>\nSend a PM from a player to another player, both given by the player name or steam / entity id (as given by e.g. "lpi").',
-                },
-                {
-                    command: 'serverchatname',
-                    description: 'Set server chatname globally',
-                    help: 'Usage:\n scn <name>\n scn',
-                },
-                {
-                    command: 'setdeathcount',
-                    description: "Set a player's deathcount.",
-                    help: 'Usage: sdc <name/entityId/steamId> <count>\n    Use operators + and - to add or subtract to/from deathcount (ex. +5 or -1)\n    Without operator the new deathcount will be <count>',
-                },
-                {
-                    command: 'cpm-setbundosize',
-                    description: 'Set the size of history on bundo',
-                    help: 'Set the size of history on bundoUsage:\n   1. setbundosize <size> \n   2. setbundosize\n1. Sets the bundo History Size\n2. Gets the bundo History Size\n',
-                },
-                {
-                    command: 'cpm-setplayerstatus',
-                    description: 'Change players attributes (zombiekills, playerkills)',
-                    help: 'Change players attributes (zombiekills, playerkills)\nUsage:\n1.   sps <name/entityId/steamId> <status> <value>\n2.   <Status> can be: zkills, pkills',
-                },
-                {
-                    command: 'cpm-showinventory2',
-                    description: 'list inventory of a given player',
-                    help: 'Usage:\n   showinventory2 <steam id / player name / entity id> [tag]\nShow the inventory of the player given by his SteamID, player name or\nentity id (as given by e.g. "lpi").\nOptionally specify a tag that is included in each line of the output. In\nthis case output is designed to be easily parseable by tools.\nNote: This only shows the player\'s inventory after it was first sent to\nthe server which happens at least every 30 seconds.',
-                },
-                {
-                    command: 'cpm-shutdownba',
-                    description: 'Timed shutdown with bloodmoon awareness.',
-                    help: 'Usage: shutdownba <minutes> [reset/resetunclaimed/resetprefabs]\nshutdownba stop\nshutdownba delayfrom <inGameHour>\nshutdownba delayuntil <inGameHour>\nshutdownba counttext <text>\nshutdownba delaytext <text>',
-                },
-                {
-                    command: 'cpm-sleepers',
-                    description: 'Remove sleepervolumes from world',
-                    help: 'Usage:  1. sleepers p1\n  2. sleepers p2 remove\n1. Store position for use with p2\n2. Remove sleepervolumes from stored pos p1 to p2',
-                },
-                {
-                    command: 'cpm-targetedhorde',
-                    description: 'Spawn targeted horde near a (or all) player or coordinate',
-                    help: 'Spawn targeted horde near a (or all) player.Usage:\n   th <steam id/player name/entity id> <qntd>\nor   th all <qntd>\nor   th <x> <y> <z> <qntd>\n',
-                },
-                {
-                    command: 'cpm-teleportplayerhome',
-                    description: 'teleport a player to his home (on bedroll)',
-                    help: 'Usage:\n  teleportplayerhome <steam id / player name / entity id>',
-                },
-                {
-                    command: 'teleport2bag',
-                    description: 'Teleport player to his/her backpack after death.',
-                    help: 'Usage:\n tp2bag <Name/SteamID/EntityID>',
-                },
-                {
-                    command: 'cpm-tprotect',
-                    description: 'Set protection to a location in same way as trader.',
-                    help: 'Usage:\n  1. tprotect <add/del> <x1> <x2> <z1> <z2>\n  2. tprotect <add/del> <x>@<qnt> <z>@<qnt>\n  3. tprotect <add/del> <qnt> <qnt>\n  4. tprotect p1\n  5. tprotect p2 <add/del>\n  6. tprotect radius <radius> <steamId/entityId/Name> <add/del>\n1. protect or unprotect blocks from x1,z1 to x2,z2\n2. protect or unprotect blocks from x,z each quantity. Quantity can be posivite or negative.\n3. protect or unprotect blocks from your position each quantity. Quantity can be posivite or negative.\n4. Store your position to be used on method 5. p1 store player position\n5. protect or unprotect block from position stored on method 4 until your current location.\n6. protect or unprotect blocks within boundaries on <radius> distance from <steamId/entityId/Name> position.',
-                },
-                {
-                    command: 'cpm-traderlist',
-                    description: 'List Trader Areas',
-                    help: 'Usage:\n  1. traderlist',
-                },
-                {
-                    command: 'cpm-unlockall',
-                    description: 'unlock all secure loots, chests and doors for the current player.',
-                    help: 'Unlock all secure loots, chests and doors for the current player.',
-                },
-                {
-                    command: 'cpm-w2l',
-                    description: 'Write to console.',
-                    help: 'Usage: w2l <msg>',
-                },
-                {
-                    command: 'wipeinventory',
-                    description: "Reset a player's inventory completely (bag, belt and equipment).",
-                    help: 'Usage: wi <steamId>',
-                },
-                {
-                    command: 'cpm-wlf',
-                    description: 'Adds all friends of a player to whitelist(s) of their claim(s)',
-                    help: 'Adds all friends of a player to whitelist(s) of their claim(s)\nUsage:\n   wlf add <Name/EntityId/SteamId>\n   wlf del <Name/EntityId/SteamId>',
-                },
-                {
-                    command: 'cpm-wpc',
-                    description: 'Manage CPM waypoints',
-                    help: 'Add/Remove/List waypoints\nUsage:\n   wpc add <name> <x> <y> <z>\n   wpc remove <name>\n   wpc list',
                 },
                 {
                     command: 'creativemenu',
@@ -553,7 +138,7 @@
                 },
                 {
                     command: 'debugshot',
-                    description: 'Lets you make a screenshot that will have some generic info\non it and a custom text you can enter. Also stores a list\nof your current perk levels in a CSV file next to it.',
+                    description: "Usage:\n  debugshot [save perks]\nLets you make a screenshot that will have some generic info\non it and a custom text you can enter. Also stores a list\nof your current perk levels in a CSV file next to it if the\noptional parameter 'save perks' is set to true",
                     help: '',
                 },
                 {
@@ -569,7 +154,7 @@
                 {
                     command: 'dms',
                     description: 'Gives control over Dynamic Music functionality.',
-                    help: 'Options:\nplay - Gets and plays the track at the front of the track queue\nstop - halts playback of track and deletes game object associated with track',
+                    help: 'No commands available for dms at the moment.',
                 },
                 {
                     command: 'dof',
@@ -577,13 +162,18 @@
                     help: '',
                 },
                 {
-                    command: 'enablerendering',
-                    description: 'enable/disable live map rendering',
+                    command: 'Dynamic mesh',
+                    description: 'Dynamic mesh',
                     help: '',
                 },
                 {
-                    command: 'enablescope',
-                    description: 'toggle debug scope',
+                    command: 'Dynamic mesh debug',
+                    description: 'Dynamic mesh debug',
+                    help: '',
+                },
+                {
+                    command: 'enablerendering',
+                    description: 'enable/disable live map rendering',
                     help: '',
                 },
                 {
@@ -599,7 +189,7 @@
                 {
                     command: 'exportprefab',
                     description: 'Exports a prefab from a world area',
-                    help: 'Usage:\n  1. exportprefab <name> <x1> <y1> <z1> <x2> <y2> <z2>\n1. Exports a prefab with the given name from a box defined by the coordinate pair of two corners\n5. As 4. but also specify the spawner source of the entity (Dynamic, StaticSpawner, Biome)',
+                    help: "Usage:\n  exportprefab <name> <x1> <y1> <z1> <x2> <y2> <z2> [part]\nExports a prefab with the given name from a box defined by the coordinate pair of two corners\nIf the optional parameter 'part' is 'true' it will export into the 'Parts' subfolder of the prefabs folder",
                 },
                 {
                     command: 'floatingorigin',
@@ -612,8 +202,13 @@
                     help: '',
                 },
                 {
+                    command: 'gameevent',
+                    description: 'usage: gameevent eventname',
+                    help: '',
+                },
+                {
                     command: 'gamestage',
-                    description: 'usage: gamestage - displays the gamestage of the local player.',
+                    description: 'Shows the gamestage of the local player',
                     help: '',
                 },
                 {
@@ -625,6 +220,11 @@
                     command: 'getgamestat',
                     description: 'Gets game stats',
                     help: 'Get all game stats or only those matching a given substring',
+                },
+                {
+                    command: 'getlogpath',
+                    description: 'Get the path of the logfile the game currently writes to',
+                    help: '',
                 },
                 {
                     command: 'getoptions',
@@ -639,7 +239,7 @@
                 {
                     command: 'gfx',
                     description: 'Graphics commands',
-                    help: 'Graphics commands:\naf <value> - anisotropic filtering off, on or force on (0, 1, 2)\ndt <value> - toggle distant terrain or set value (0 or 1)\nkey name <value> - set shader keyword (0 or 1)\npp name <value> - set postprocessing name (enable, ambientOcclusion (ao), bloom, colorGrading (cg), eyeAdaptation (ea), etc.) to value (0 or 1)\nst name <value> - set streaming name (budget, forceload) to value\ntex - show texture info',
+                    help: 'Graphics commands:\naf <value> - anisotropic filtering off, on or force on (0, 1, 2)\ndr <scale> <min> <max> - set dynamic res scale (0 auto, .1 to 1 force, -1 for off) and min/max FPS\ndt <value> - toggle distant terrain or set value (0 or 1)\ndti <value> - set distant terrain instancing (0 or 1)\ndtmaxlod <value> - set distant terrain max LOD (0 to 5)\ndtpix <value> - set distant terrain pixel error (1 to 200)\ngraph # - 0 removes all graphs, 1+ sets graphs height\ngraph cvar <name> <count> <max> - show graph of a cvar with line count (0 hides) and max graph value (default is 1)\ngraph dr <count> - show dynamic res graph with line count (0 hides)\ngraph fps <count> <fps max> - show fps graph with line count (0 hides) and max graph fps\ngraph pe <name> <count> <max> - show graph of a passive effect (healthmax..) with line count (0 hides) and max graph value (default is 1)\ngraph stat <name> <count> <max> - show graph of a stat (health, stamina..) with line count (0 hides) and max graph value (default is 1)\ngraph tex <name> <count> - show texture graph (mem, stream) with line count (0 hides)\nkey name <value> - set shader keyword (0 or 1)\npp name <value> - set postprocessing name (enable, ambientOcclusion (ao), auto exposure (ae), bloom, colorGrading (cg), etc.) to value (0 or 1)\nres <width> <height> - set screen resolution\nskin <value> - set skin bone count (1, 2, 4, 5+ (all))\nst name <value> - set streaming name (budget (0 disables), discard, forceload, reduction) to value\ntex - show texture info\ntexlimit <value> - set limit (0-x)',
                 },
                 {
                     command: 'give',
@@ -664,7 +264,7 @@
                 {
                     command: 'help',
                     description: 'Help on console and specific commands',
-                    help: 'Type "help" for an overview or "help <command / topic>" for\ndetailed information about a specific command or topic',
+                    help: 'Usage:\n  1. help\n  2. help * <searchstring>\n  3. help <command name>\n1. Show general help and list all available commands\n2. List commands where either the name or the description contains the given text\n3. Show help for the given command',
                 },
                 {
                     command: 'kick',
@@ -684,7 +284,7 @@
                 {
                     command: 'killall',
                     description: 'Kill all entities',
-                    help: 'Kills all matching entities (but never players)\nUsage:\n   killall (all enemies)\n   killall alive (all EntityAlive types except vehicles)\n   killall all (all types)',
+                    help: 'Kills all matching entities (but never players)\nUsage:\n   killall (all enemies)\n   killall alive (all EntityAlive types except vehicles and turrets)\n   killall all (all types)',
                 },
                 {
                     command: 'listgameobjects',
@@ -693,8 +293,8 @@
                 },
                 {
                     command: 'lights',
-                    description: 'Debug views to optimize lights',
-                    help: '',
+                    description: 'Light debugging',
+                    help: 'Light debugging:\nv - toggle viewer enable\noff - viewer lights off\non - viewer lights on\nclearreg - clear registered\ndisableall - \nenableall - \nlod - toggle viewer LODs\nlist - list all lights\nlistfile - list all lights to Lights.txt\nliste - list lights effecting the player position',
                 },
                 {
                     command: 'listents',
@@ -709,12 +309,12 @@
                 {
                     command: 'listknownplayers',
                     description: 'lists all players that were ever online',
-                    help: 'Usage:\n  1. listknownplayers\n  2. listknownplayers -online\n  3. listknownplayers -notbanned\n  4. listknownplayers <player name / steamid>\n1. Lists all players that have ever been online\n2. Lists only the players that are currently online\n3. Lists only the players that are not banned\n4. Lists all players whose name contains the given string or matches the given SteamID',
+                    help: 'Usage:\n  1. listknownplayers\n  2. listknownplayers -online\n  3. listknownplayers -notbanned\n  4. listknownplayers <player name / userid>\n1. Lists all players that have ever been online\n2. Lists only the players that are currently online\n3. Lists only the players that are not banned\n4. Lists all players whose name contains the given string or matches the given UserID',
                 },
                 {
                     command: 'listlandprotection',
                     description: 'lists all land protection blocks and owners',
-                    help: 'Usage:\n  1. listlandprotection summary\n  2. listlandprotection <steam id / player name / entity id> [parseable]\n  3. listlandprotection nearby [length]\n1. Lists only players that own claimstones, the number they own and the protection status\n2. Lists only the claims of the player given by his SteamID / entity id / playername, including the individual claim positions.\n   If "parseable" is specified the output of the individual claims will be in a format better suited for programmatical readout.\n3. Lists claims in a square with edge length of 64 (or the optionally specified size) around the executing player\n',
+                    help: 'Usage:\n  1. listlandprotection summary\n  2. listlandprotection <user id / player name / entity id> [parseable]\n  3. listlandprotection nearby [length]\n1. Lists only players that own claimstones, the number they own and the protection status\n2. Lists only the claims of the player given by his UserID / entity id / playername, including the individual claim positions.\n   If "parseable" is specified the output of the individual claims will be in a format better suited for programmatical readout.\n3. Lists claims in a square with edge length of 64 (or the optionally specified size) around the executing player\n',
                 },
                 {
                     command: 'listplayerids',
@@ -742,14 +342,34 @@
                     help: 'Select which types of log messages are shown on the connection\nyou enter this command. By default all log messages are printed\non every connection.\nUsage: loglevel <loglevel name> <true/false>\nLog levels: INF, WRN, ERR, EXC or ALL\nExample: Disable display of WRN messages: loglevel WRN false',
                 },
                 {
+                    command: 'mapdata',
+                    description: 'Writes some map data to an image',
+                    help: 'Usage:\n  1. mapdata\n  2. mapdata start',
+                },
+                {
                     command: 'mem',
                     description: 'Prints memory information and unloads resources or changes garbage collector',
-                    help: 'Commands:\nclean - cleanup memory pools\npools - list memory pools\ngc - show GC info\ngc alloc <value> - allocate k value of temp memory\ngc c - run collection\ngc enable <value> - enable GC (0 or 1)\ngc inc <value> - run incremental collect for value ms\ngc inctime <value> - set incremental collect time in ms',
+                    help: 'Commands:\nclean - cleanup memory pools\npools - list memory pools\ngc - show GC info\ngc alloc <value> - allocate k value of temp memory\ngc c - run collection\ngc enable <value> - enable GC (0 or 1)\ngc inc <value> - run incremental collect for value ms\ngc inctime <value> - set incremental collect time in ms\nobj [mode] - list object pool (active or all)\nobjs - shrink object pool\nlog [interval] - start/stop logging of performance data to a file',
                 },
                 {
                     command: 'memcl',
                     description: 'Prints memory information on client and calls garbage collector',
-                    help: 'Commands:\nclean - cleanup memory pools\npools - list memory pools\ngc - show GC info\ngc alloc <value> - allocate k value of temp memory\ngc c - run collection\ngc enable <value> - enable GC (0 or 1)\ngc inc <value> - run incremental collect for value ms\ngc inctime <value> - set incremental collect time in ms',
+                    help: 'Commands:\nclean - cleanup memory pools\npools - list memory pools\ngc - show GC info\ngc alloc <value> - allocate k value of temp memory\ngc c - run collection\ngc enable <value> - enable GC (0 or 1)\ngc inc <value> - run incremental collect for value ms\ngc inctime <value> - set incremental collect time in ms\nobj [mode] - list object pool (active or all)\nobjs - shrink object pool\nlog [interval] - start/stop logging of performance data to a file',
+                },
+                {
+                    command: 'networkclient',
+                    description: 'Client side network commands',
+                    help: 'Commands:\nlatencysim <min> <max> - sets simulation in millisecs (0 min disables)\npacketlosssim <chance> - sets simulation in percent (0 - 50)',
+                },
+                {
+                    command: 'networkserver',
+                    description: 'Server side network commands',
+                    help: 'Commands:\nlatencysim <min> <max> - sets simulation in millisecs (0 min disables)\npacketlosssim <chance> - sets simulation in percent (0 - 50)',
+                },
+                {
+                    command: 'newave',
+                    description: 'Test new HD stuff.',
+                    help: 'Usage:\n  1. newave\n',
                 },
                 {
                     command: 'occlusion',
@@ -767,6 +387,16 @@
                     help: 'tbd',
                 },
                 {
+                    command: 'placeblockrotations',
+                    description: 'Places all rotations of the currently held block',
+                    help: 'Places the block you currently hold in your hand in all supported rotations. Starts\nat the current selection box and spreads out towards the right relative to the\ncurrent view direction of the player. Spaces out each block by 1m meter.',
+                },
+                {
+                    command: 'placeblockshapes',
+                    description: 'Places all shapes of the currently held variant helper block',
+                    help: 'Places all variants of the helper block you currently hold in your hand. Starts\nat the current selection box and spreads out towards the right relative to the\ncurrent view direction of the player, starting a new row behind those every\n25 blocks. Spaces out each block by 1m meter.',
+                },
+                {
                     command: 'pois',
                     description: 'Switches distant POIs on/off',
                     help: 'Use on or off or only the command to toggle',
@@ -778,13 +408,13 @@
                 },
                 {
                     command: 'prefab',
-                    description: '',
-                    help: '',
+                    description: 'Prefab commands',
+                    help: 'Prefab commands:\nclear\nexport\nmerge\nload\nsave\nthumbnail\ndensity <match density> <set density> - set density of non air blocks that match',
                 },
                 {
                     command: 'prefabupdater',
                     description: '',
-                    help: "Update prefabs for newer game builds.\nUsage:\n   1. prefabupdater loadxml <xmlfile>\n   2. prefabupdater clearxml\n   3. prefabupdater createmapping <prefabname>\n\n1. Load a blocks.xml that has the information about the prefabs to be\n   updated. If you have a modded XML first load that modded XML and\n   afterwards load the XML provided with the game for legacy prefabs.\n   The xmlfile-parameter can either be relative to the game's base\n   directory or an absolute path.\n2. Unload the data loaded with loadxml.\n3. Create a block mapping file for the given prefab(s). Accepts '*' as\n   wildcard.",
+                    help: "Update prefabs for newer game builds.\nUsage:\n   1. prefabupdater loadxml <xmlfile>\n   2. prefabupdater clearxml\n   3. prefabupdater createmapping <prefabname>\n   4. prefabupdater loadtable [nametablefile]\n   5. prefabupdater unloadtables\n   6. prefabupdater updateblocks\n\n1. Load a blocks.xml that has the information about the prefabs to be\n   updated. If you have a modded XML first load that modded XML and\n   afterwards load the XML provided with the game for legacy prefabs.\n   The xmlfile-parameter can either be relative to the game's base\n   directory or an absolute path (for pre-Alpha 17 prefabs).\n2. Unload the data loaded with loadxml.\n3. Create a block mapping file for the given prefab(s). Accepts '*' as\n   wildcard (for pre-Alpha 17 prefabs).\n4. Load a block name mapping file. File path is relative to the game\n   directory if not specified as absolute path. If no file is given the\n   default file supplied with the game is loaded (BlockUpdates.csv). \n5. Unload the data loaded with loadtable.\n6. Update the block mappings in prefabs with the block name mapping table loaded by 4.",
                 },
                 {
                     command: 'profilenetwork',
@@ -797,6 +427,11 @@
                     help: '',
                 },
                 {
+                    command: 'reloadentityclasses, rec',
+                    description: 'reloads entityclasses xml data.',
+                    help: '',
+                },
+                {
                     command: 'reloadwebpermissions',
                     description: 'force reload of web permissions file',
                     help: '',
@@ -804,7 +439,7 @@
                 {
                     command: 'removelandprotection',
                     description: 'removes the association of a land protection block to the owner',
-                    help: 'Usage:  1. removelandprotection <steamid>\n  2. removelandprotection <x> <y> <z>\n  3. removelandprotection nearby [length]\n1. Remove all land claims owned by the user with the given SteamID\n2. Remove only the claim block on the exactly given block position\n3. Remove all claims in a square with edge length of 64 (or the optionally specified size) around the executing player',
+                    help: 'Usage:  1. removelandprotection <userid>\n  2. removelandprotection <x> <y> <z>\n  3. removelandprotection nearby [length]\n1. Remove all land claims owned by the user with the given UserID\n2. Remove only the claim block on the exactly given block position\n3. Remove all claims in a square with edge length of 64 (or the optionally specified size) around the executing player',
                 },
                 {
                     command: 'removequest',
@@ -827,6 +462,11 @@
                     help: 'Usage:\n   reply <message>\nSend the given message to the user you last received a PM from.',
                 },
                 {
+                    command: 'resetallstats',
+                    description: 'Resets all Steam achievement stats (and achievements when parameter is true)',
+                    help: '',
+                },
+                {
                     command: 'saveworld',
                     description: 'Saves the world manually.',
                     help: '',
@@ -844,7 +484,7 @@
                 {
                     command: 'ScreenEffect',
                     description: 'Sets a screen effect',
-                    help: 'ScreenEffect [name] [intensity]',
+                    help: 'ScreenEffect [name] [intensity] [fade time]\nScreenEffect clear\nScreenEffect reload',
                 },
                 {
                     command: 'setgamepref',
@@ -899,7 +539,7 @@
                 {
                     command: 'showinventory',
                     description: 'list inventory of a given player',
-                    help: 'Usage:\n   showinventory <steam id / player name / entity id> [tag]\nShow the inventory of the player given by his SteamID, player name or\nentity id (as given by e.g. "lpi").\nOptionally specify a tag that is included in each line of the output. In\nthis case output is designed to be easily parseable by tools.\nNote: This only shows the player\'s inventory after it was first sent to\nthe server which happens at least every 30 seconds.',
+                    help: 'Usage:\n   showinventory <user id / player name / entity id> [tag]\nShow the inventory of the player given by his UserID, player name or\nentity id (as given by e.g. "lpi").\nOptionally specify a tag that is included in each line of the output. In\nthis case output is designed to be easily parseable by tools.\nNote: This only shows the player\'s inventory after it was first sent to\nthe server which happens at least every 30 seconds.',
                 },
                 {
                     command: 'shownexthordetime',
@@ -922,6 +562,11 @@
                     help: '',
                 },
                 {
+                    command: 'showtriggers',
+                    description: 'Sets the visibility of the block triggers.',
+                    help: '',
+                },
+                {
                     command: 'shutdown',
                     description: 'shuts down the game',
                     help: '',
@@ -932,14 +577,14 @@
                     help: '',
                 },
                 {
+                    command: 'sleeperreset',
+                    description: 'Show sleeper info',
+                    help: '',
+                },
+                {
                     command: 'smoothworldall',
                     description: 'Applies some batched smoothing commands.',
                     help: 'Usage:\n  1. smoothworldall [passes] [noregion]\n  2. smoothworldall <worldname> [passes] [noregion]\nArguments:\n  passes: Integer number, overriding the default of 5 passes\n  noregion: If passed in literally it will write the resulting heightmap\n            to the dtm.raw instead of updating all of the worlds region files\n  worldname: If specified the command is applied to the given world instead of the currently loaded world',
-                },
-                {
-                    command: 'sounddebug',
-                    description: 'Toggles SoundManager debug output.',
-                    help: '',
                 },
                 {
                     command: 'spawnairdrop',
@@ -984,7 +629,7 @@
                 {
                     command: 'spectrum',
                     description: 'Force a particular lighting spectrum.',
-                    help: 'spectrum /<Biome/BloodMoon/Foggy/Rainy/Stormy/Snowy/>\n',
+                    help: 'spectrum <Auto, Biome, BloodMoon, Foggy, Rainy, Stormy, Snowy>\n',
                 },
                 {
                     command: 'stab',
@@ -1014,11 +659,26 @@
                 {
                     command: 'teleportplayer',
                     description: 'Teleport a given player',
-                    help: 'Usage:\n  1. teleportplayer <steam id / player name / entity id> <x> <y> <z> [view direction]\n  2. teleportplayer <steam id / player name / entity id> <target steam id / player name / entity id>\n1. Teleports the player given by his SteamID, player name or entity id (as given by e.g. "lpi")\n   to the specified location. Use y = -1 to spawn on ground. Optional argument view direction\n   allows you to speify a direction you want to look in after teleporting. This can be either\n   of n, ne, e, se, s, sw, w, nw or north, northeast, etc.\n2. As 1, but destination given by another (online) player',
+                    help: 'Usage:\n  1. teleportplayer <user id / player name / entity id> <x> <y> <z> [view direction]\n  2. teleportplayer <user id / player name / entity id> <target user id / player name / entity id>\n1. Teleports the player given by his UserID, player name or entity id (as given by e.g. "lpi")\n   to the specified location. Use y = -1 to spawn on ground. Optional argument view direction\n   allows you to speify a direction you want to look in after teleporting. This can be either\n   of n, ne, e, se, s, sw, w, nw or north, northeast, etc.\n2. As 1, but destination given by another (online) player',
+                },
+                {
+                    command: 'testDismemberment',
+                    description: 'Dismemberment testing toggled.',
+                    help: '',
+                },
+                {
+                    command: 'testloop',
+                    description: 'Test code in a loop',
+                    help: 'Commands:\np - player',
                 },
                 {
                     command: 'thirsty',
                     description: 'Makes the player thirsty (optionally specify the amount of water you want to have in percent).',
+                    help: '',
+                },
+                {
+                    command: 'tppoi',
+                    description: '',
                     help: '',
                 },
                 {
@@ -1029,7 +689,12 @@
                 {
                     command: 'trees',
                     description: 'Switches trees on/off',
-                    help: 'Use on or off or only the command to toggle',
+                    help: 'trees - toggles\ntrees <value> - (off, on)',
+                },
+                {
+                    command: 'twitch',
+                    description: 'usage: twitch <command> <params>',
+                    help: '',
                 },
                 {
                     command: 'updatelighton',
@@ -1054,7 +719,7 @@
                 {
                     command: 'weather',
                     description: 'Control weather settings',
-                    help: 'normalize\nSnowFall [0..1]\nRain [0..1]\nWet [0..1]\nSnow [0..1]\nClouds [0..1]\nTemp [-INF...INF]\nFog [density (-1 for default fog)] [start] [end]\nFogColor [red (-1 for default)] [green] [blue]\nDefaultClouds\nDefaultFog\nDefaultRain\nDefaultSnow\nDefaultSnowFall\nDefaultTemp\nDefaultWet\nDefaults\n',
+                    help: 'Clouds [0 to 1 (-1 defaults)]\nFog [density (-1 defaults)] [start] [end]\nFogColor [red (-1 defaults)] [green] [blue]\nRain [0 to 1 (-1 defaults)]\nWet [0 to 1 (-1 defaults)]\nSnow [0 to 1 (-1 defaults)]\nSnowFall [0 to 1 (-1 defaults)]\nTemp [-99 to 101 (< -99 defaults)]\nWind [0 to 200 (-1 defaults)]\nSimRand [0 to 1 (-1 defaults)]\nDefaults or d\n',
                 },
                 {
                     command: 'weathersurvival',
@@ -1079,7 +744,7 @@
                 {
                     command: 'whitelist',
                     description: 'Manage whitelist entries',
-                    help: 'Set/get whitelist entries. Note: If there is at least one entry on the list\nno user who is not on this list will be able to join the server!\nUsage:\n   whitelist add <name / entity id / steam id>\n   whitelist remove <name / entity id / steam id>\n   whitelist list\nTo use the add/remove sub commands with a name or entity id the player has\nto be online, the variant with steam id can be used for currently offline\nusers too.',
+                    help: "Set/get whitelist entries. Note: If there is at least one entry on the list\nno user who is not on this list will be able to join the server!\nUsage:\n   whitelist add <name / entity id / platform + platform user id> [displayname]\n   whitelist remove <name / entity id / platform + platform user id>\n   whitelist addgroup <steam id> [displayname]\n   whitelist removegroup <steam id>\n   whitelist list\nTo use the add/remove sub commands with a name or entity ID the player has\nto be online, the variant with platform and platform ID can be used for currently offline\nusers too.\nDisplayname can be used to put a descriptive name to the ban list in addition\nto the user's platform ID. If used on an online user the player name is used by default.",
                 },
                 {
                     command: 'workstationmaterials',
@@ -1090,16 +755,6 @@
                     command: 'xui',
                     description: 'Execute XUi operations',
                     help: 'Usage:\n   xui open <window group name> [instance] [closeOthers]\n   xui close <window group name> [instance]\n   xui reload [window group name] [instance]\n   xui list <"instances" / "windows"> [instance]\n',
-                },
-                {
-                    command: 'xuireload',
-                    description: 'Access xui related functions such as reinitializing a window group, opening a window group',
-                    help: 'Usage:\nAll <> are optional parameters, if not specified it will reload all of that type.\n\n  1. xuireload - Reloads all of xui. The process does take a moment.\n  2. xuireload windowgroup name - Reloads a window group\n  3. xuireload window name - Reloads a window\n  4. xuireload control name - Reloads a control\n  5. xuireload style name - Reloads a style\n',
-                },
-                {
-                    command: 'zip',
-                    description: 'Control zipline settings',
-                    help: '',
                 },
             ],
         },

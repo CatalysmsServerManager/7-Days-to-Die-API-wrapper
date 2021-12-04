@@ -1,39 +1,50 @@
 {
     meta: {
-        createdAt: '2020-04-27T18:32:06.898Z',
+        createdAt: '2021-12-04T12:34:04.063Z',
         host: 'https://7d2d.csmm.app',
         resHumanReadable: true,
     },
     req: {
-        url: '/api/getplayerslocation?offline=false',
-        method: 'GET',
         headers: {
             accept: '*/*',
             'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
             'accept-encoding': 'gzip,deflate',
             connection: 'close',
         },
+        url: '/api/getplayerslocation?offline=false',
+        method: 'GET',
         body: '',
     },
     res: {
         status: 200,
         headers: {
+            server: [
+                'nginx',
+            ],
+            date: [
+                'Sat, 04 Dec 2021 12:34:04 GMT',
+            ],
             'content-type': [
                 'application/json; charset=utf-8',
             ],
-            server: [
-                'Mono-HTTPAPI/1.0',
-            ],
-            date: [
-                'Mon, 27 Apr 2020 18:32:07 GMT',
-            ],
             'content-length': [
-                '2',
+                '108',
             ],
             connection: [
                 'close',
             ],
         },
-        body: [],
+        body: [
+            {
+                steamid: 'Steam_76561198028175941',
+                name: 'Catalysm',
+                online: true,
+                position: {
+                    x: 1658,
+                    y: 64,
+                    z: 301,
+                },
+            },
+        ],
     },
 }

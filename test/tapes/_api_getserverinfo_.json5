@@ -1,34 +1,34 @@
 {
     meta: {
-        createdAt: '2020-04-27T18:32:07.486Z',
+        createdAt: '2021-12-04T12:34:04.293Z',
         host: 'https://7d2d.csmm.app',
         resHumanReadable: true,
     },
     req: {
-        url: '/api/getserverinfo',
-        method: 'GET',
         headers: {
             accept: '*/*',
             'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
             'accept-encoding': 'gzip,deflate',
             connection: 'close',
         },
+        url: '/api/getserverinfo',
+        method: 'GET',
         body: '',
     },
     res: {
         status: 200,
         headers: {
+            server: [
+                'nginx',
+            ],
+            date: [
+                'Sat, 04 Dec 2021 12:34:04 GMT',
+            ],
             'content-type': [
                 'application/json; charset=utf-8',
             ],
-            server: [
-                'Mono-HTTPAPI/1.0',
-            ],
-            date: [
-                'Mon, 27 Apr 2020 18:32:07 GMT',
-            ],
             'content-length': [
-                '3173',
+                '3289',
             ],
             connection: [
                 'close',
@@ -45,15 +45,15 @@
             },
             GameHost: {
                 type: 'string',
-                value: 'My Game Host',
+                value: 'CSMM Dev',
             },
             ServerDescription: {
                 type: 'string',
-                value: 'A 7 Days to Die server',
+                value: 'Cata is breaking stuff in here :eyes:',
             },
             ServerWebsiteURL: {
                 type: 'string',
-                value: '',
+                value: 'https://csmm.app',
             },
             LevelName: {
                 type: 'string',
@@ -65,23 +65,19 @@
             },
             Version: {
                 type: 'string',
-                value: 'Alpha.18.4.4',
+                value: 'Alpha.20.0.213',
             },
             IP: {
                 type: 'string',
                 value: '78.46.203.193',
             },
-            CountryCode: {
-                type: 'string',
-                value: 'XX',
-            },
             SteamID: {
                 type: 'string',
-                value: '90134785560327177',
+                value: '90153743389532161',
             },
             CompatibilityVersion: {
                 type: 'string',
-                value: 'Alpha 18.4',
+                value: 'Alpha 20',
             },
             Platform: {
                 type: 'string',
@@ -97,7 +93,7 @@
             },
             CurrentPlayers: {
                 type: 'int',
-                value: 0,
+                value: 1,
             },
             MaxPlayers: {
                 type: 'int',
@@ -126,6 +122,10 @@
             ZombiesRun: {
                 type: 'int',
                 value: -1,
+            },
+            ZombieFeralSense: {
+                type: 'int',
+                value: 0,
             },
             ZombieMove: {
                 type: 'int',
@@ -177,7 +177,7 @@
             },
             CurrentServerTime: {
                 type: 'int',
-                value: 934328,
+                value: 10591,
             },
             DayLightLength: {
                 type: 'int',
@@ -209,7 +209,7 @@
             },
             LootRespawnDays: {
                 type: 'int',
-                value: 30,
+                value: 7,
             },
             MaxSpawnedZombies: {
                 type: 'int',
@@ -263,13 +263,17 @@
                 type: 'int',
                 value: 45,
             },
+            BedrollDeadZoneSize: {
+                type: 'int',
+                value: 15,
+            },
             IsDedicated: {
                 type: 'bool',
                 value: true,
             },
             IsPasswordProtected: {
                 type: 'bool',
-                value: false,
+                value: true,
             },
             ShowFriendPlayerOnMap: {
                 type: 'bool',
@@ -294,6 +298,10 @@
             StockFiles: {
                 type: 'bool',
                 value: true,
+            },
+            ModdedConfig: {
+                type: 'bool',
+                value: false,
             },
             RequiresMod: {
                 type: 'bool',
