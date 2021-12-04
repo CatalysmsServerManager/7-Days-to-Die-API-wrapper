@@ -1,7 +1,7 @@
 /**
  * A20 introduces more platforms, which means player IDs can be a bit wonky. 
  */
-export function handleSteamId(data: Record<string, any> | Array<Record<string, any>>): Record<string, any> {
+export function handleSteamId(data: Record<string, any> | Array<Record<string, any>>): any {
 
   if (Array.isArray(data)) {
     return data.map(handleSteamId);
