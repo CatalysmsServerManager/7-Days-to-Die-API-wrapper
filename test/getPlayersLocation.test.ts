@@ -1,7 +1,8 @@
 'use strict';
-import g from './_globals';
 import * as chai from 'chai';
-import { getPlayersLocation } from '../lib/index';
+
+import { getPlayersLocation } from '../lib';
+import g from './_globals';
 
 
 describe('/api/getPlayersLocation', async () => {
@@ -13,8 +14,13 @@ describe('/api/getPlayersLocation', async () => {
         const response = await getPlayersLocation(g.getTestServer(), true);
         chai.expect(response).to.be.a('array');
         chai.expect(response).to.have.length.greaterThan(0);
-        chai.expect(response[0].steamid).to.be.a("string");
-        chai.expect(response[0].name).to.be.a("string");
-        chai.expect(response[0].online).to.be.a("boolean");
+
+        for (const player of response) {
+            chai.expect(player.steamid).to.be.a("string");
+            chai.expect(player.steamid).to.not.contain('Steam_');
+            chai.expect(player.userid).to.be.a("string");
+            chai.expect(player.name).to.be.a("string");
+            chai.expect(player.online).to.be.a("boolean");
+        }
     });
 });
