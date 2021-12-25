@@ -1,0 +1,50 @@
+{
+    meta: {
+        createdAt: '2021-12-25T19:20:09.743Z',
+        host: 'https://7d2d.csmm.app',
+        latency: 60000,
+        resHumanReadable: true,
+    },
+    req: {
+        headers: {
+            'x-unit-test-comment': 'timeout',
+            accept: '*/*',
+            'user-agent': 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)',
+            'accept-encoding': 'gzip,deflate',
+            connection: 'close',
+        },
+        url: '/api/getstats',
+        method: 'GET',
+        body: '',
+    },
+    res: {
+        status: 200,
+        headers: {
+            server: [
+                'nginx',
+            ],
+            date: [
+                'Sat, 25 Dec 2021 19:20:09 GMT',
+            ],
+            'content-type': [
+                'application/json; charset=utf-8',
+            ],
+            'content-length': [
+                '84',
+            ],
+            connection: [
+                'close',
+            ],
+        },
+        body: {
+            gametime: {
+                days: 22,
+                hours: 6,
+                minutes: 58,
+            },
+            players: 0,
+            hostiles: 0,
+            animals: 0,
+        },
+    },
+}

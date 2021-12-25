@@ -35,7 +35,8 @@ type json = any;
 
 async function fetchJson(server: SdtdServer, url: string, qs: ParsedUrlQueryInput, fetchOpts?: RequestInit): Promise<json> {
     const uri = getBaseUrl(server) + url + '?' + stringify(qs, { skipNulls: true });
-    return fetch(uri, fetchOpts)
+    const timeout = fetchOpts?.timeout ?? 3000;
+    return fetch(uri, { ...fetchOpts, timeout })
     .then(function(response) {
         if (!response.ok) {
             throw Error(response.statusText);
