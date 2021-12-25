@@ -27,7 +27,7 @@
     "docs": "typedoc --out docs/ lib/ --theme minimal --name '7 Days to Die API wrapper' --includeDeclarations --excludeExternals --exclude lib/getStats.ts",
     "lint": "eslint --ext .ts,.tsx --ignore-path ./.gitignore .",
     "sanitize:tapes": "node bin/sanitize-tapes.js",
-    "test": "mocha test",
+    "test": "mocha test --exit",
     "postversion": "git push && git push --tags"
   },
   "husky": {

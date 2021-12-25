@@ -1,5 +1,6 @@
 "use strict";
 import * as chai from 'chai';
+import { expect } from 'chai';
 
 import { getStats } from '../lib';
 import g from './_globals';
@@ -20,5 +21,10 @@ describe("/api/getstats", async () => {
         await chai
             .expect(getStats(g.getTestServer(), { timeout: 1 }))
             .to.be.rejectedWith(Error);
+    });
+
+    it("Errors when request timeouts", async function () {
+        this.timeout(10000);
+        await expect(getStats(g.getTestServer(), { headers: { 'X-UNIT-TEST-COMMENT': 'timeout' } })).to.eventually.be.rejectedWith('network timeout at');
     });
 });

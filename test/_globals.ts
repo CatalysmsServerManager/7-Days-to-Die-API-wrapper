@@ -2,15 +2,16 @@
 /*
  * Shareable items between tests
  */
-import { URL } from 'url';
-import * as querystring from 'querystring';
 import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
-import TalkbackServer from 'talkback/server';
+import * as querystring from 'querystring';
 import { RecordMode } from 'talkback/options';
+import TalkbackServer from 'talkback/server';
 import Tape from 'talkback/tape';
 import { Req } from 'talkback/types';
-import { SdtdServer, getBaseUrl } from '../lib/index';
+import { URL } from 'url';
+
+import { getBaseUrl, SdtdServer } from '../lib';
 
 // talkback's typescript/import returns different stuff than the require, so disable the eslint alert for now
 //eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -45,7 +46,7 @@ class TestGlobals {
                 const query = querystring.parse(url.search.substr(1));
                 delete query.adminuser;
                 delete query.admintoken;
-                return url.pathname.replace(/\//g, '_') + '_' + querystring.stringify(query, '_', '_')  + ".json5";
+                return url.pathname.replace(/\//g, '_') + '_' + querystring.stringify(query, '_', '_') + tapeNumber  + ".json5";
             },
             requestDecorator: function(req: Req) {
                 const url = new URL(req.url, host);
@@ -55,7 +56,13 @@ class TestGlobals {
                 url.search = '?' + querystring.stringify(query);
                 req.url = url.toString().replace(host, '');
                 return req;
-            }
+            },
+            tapeDecorator: function tapeDecorator(tape: Tape) {
+                if (tape.req.headers['x-unit-test-comment'] === 'timeout') {
+                    tape.meta.latency = 5000;
+                }
+                return tape;
+              }
         });
     }
 
@@ -65,7 +72,6 @@ class TestGlobals {
     getTestServer(): SdtdServer {
         return this.testServer;
     }
-
     setProxy(proxy: TalkbackServer): void {
         this.proxy = proxy;
     }
