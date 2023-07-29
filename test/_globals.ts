@@ -41,14 +41,15 @@ class TestGlobals {
             path: `${__dirname}/tapes/`,
             silent: true,
             ignoreQueryParams: ['adminuser', 'admintoken'],
+            ignoreHeaders: ['x-sdtd-api-tokenname', 'x-sdtd-api-secret'],
             tapeNameGenerator: (tapeNumber: number, tape: Tape): string => {
                 const url = new URL(tape.req.url, host);
                 const query = querystring.parse(url.search.substr(1));
                 delete query.adminuser;
                 delete query.admintoken;
-                return url.pathname.replace(/\//g, '_') + '_' + querystring.stringify(query, '_', '_') + tapeNumber  + ".json5";
+                return url.pathname.replace(/\//g, '_') + '_' + querystring.stringify(query, '_', '_') + tapeNumber + ".json5";
             },
-            requestDecorator: function(req: Req) {
+            requestDecorator: function (req: Req) {
                 const url = new URL(req.url, host);
                 const query = querystring.parse(url.search.substr(1));
                 query.adminuser = process.env.TESTADMINUSER || 'unknown';
@@ -62,7 +63,7 @@ class TestGlobals {
                     tape.meta.latency = 5000;
                 }
                 return tape;
-              }
+            }
         });
     }
 
@@ -87,9 +88,9 @@ require('dotenv').config();
 
 chai.use(chaiAsPromised);
 
-before(function(done) {
+before(function (done) {
     testGlobals.getProxy().start(() => done());
 });
-after(function() {
+after(function () {
     testGlobals.getProxy().close();
 });
