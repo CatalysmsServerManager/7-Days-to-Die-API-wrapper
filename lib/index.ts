@@ -35,8 +35,19 @@ type json = any;
 
 async function fetchJson(server: SdtdServer, url: string, qs: ParsedUrlQueryInput, fetchOpts?: RequestInit): Promise<json> {
     const uri = getBaseUrl(server) + url + '?' + stringify(qs, { skipNulls: true });
+
     const timeout = fetchOpts?.timeout ?? 3000;
-    return fetch(uri, { ...fetchOpts, timeout })
+    const headers: Record<string, string> = {};
+
+    if (qs.adminuser) {
+        headers["X-SDTD-API-TOKENNAME"] = qs.adminuser.toString();
+    }
+
+    if (qs.admintoken) {
+        headers["X-SDTD-API-SECRET"] = qs.admintoken.toString();
+    }
+
+    return fetch(uri, { ...fetchOpts, timeout, headers })
         .then(function (response) {
             if (!response.ok) {
                 throw Error(response.statusText);
